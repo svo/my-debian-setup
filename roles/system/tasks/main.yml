@@ -6,7 +6,7 @@
   apt: pkg=wicd-gtk
   become: yes
 
-- name: Remove gnome default network management 
+- name: Remove gnome default network management
   apt: pkg={{ item }} state=absent
   with_items:
   - network-manager-gnome
@@ -22,4 +22,12 @@
   with_items:
   - i3
   - suckless-tools
+  become: yes
+
+- name: Install curl
+  apt: pkg=curl
+  become: yes
+
+- name: Install avahi
+  apt: pkg=avahi-daemon
   become: yes
