@@ -49,7 +49,7 @@
   become: yes
 
 - name: Get Packer installer
-  get_url: url=https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_linux_amd64.zip dest=~/Installs/packer_1.2.0_linux_amd64.zip
+  get_url: url=https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_linux_amd64.zip dest=~/Installs/packer_1.2.0_linux_amd64.zip checksum=sha256:d1b0fcc4e66dfe4919c25752d028a4e4466921bf0e3f75be3bbf1c85082e8040
   register: packer_get_url_result
   until: packer_get_url_result | succeeded
   retries: 3

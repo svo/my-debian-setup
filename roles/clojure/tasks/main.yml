@@ -1,0 +1,12 @@
+- name: Install lein
+  get_url: url=https://raw.github.com/technomancy/leiningen/stable/bin/lein dest=/usr/local/bin/lein mode=0755
+  become: yes
+
+- name: Install JDK
+  apt: pkg=openjdk-8-jdk
+  become: yes
+
+- name: Install vim plugin
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
+  with_items:
+  - { repo: "https://github.com/tpope/vim-fireplace.git", name: vim-fireplace }
