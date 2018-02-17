@@ -1,0 +1,15 @@
+- name: Install VLC media player
+  apt: pkg=vlc
+  become: yes
+
+- name: Add spotify apt key
+  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=0DF731E45CE24F27EEEB1450EFDC8610341D9410
+  become: yes
+
+- name: Add spotify repository
+  apt_repository: repo="deb http://repository.spotify.com stable non-free"
+  become: yes
+
+- name: Install spotify client
+  apt: pkg=spotify-client update_cache=yes
+  become: yes
