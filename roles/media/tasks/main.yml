@@ -13,3 +13,7 @@
 - name: Install spotify client
   apt: pkg=spotify-client update_cache=yes
   become: yes
+
+- name: Install shutter screenshot tool
+  apt: pkg=shutter
+  become: yes
