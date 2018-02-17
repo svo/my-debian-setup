@@ -3,6 +3,12 @@
 
   pre_tasks:
 
+    - name: Create Installs directories
+      file: path=~/Installs state=directory
+
+    - name: Symlink ~/Installs
+      file: src=~/Installs dest=/tmp/Installs state=link
+
     - name: Install apt-transport-https
       apt: pkg=apt-transport-https
       become: yes

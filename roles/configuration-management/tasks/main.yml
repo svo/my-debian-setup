@@ -16,6 +16,20 @@
   apt: pkg=virtualbox-5.2
   become: yes
 
+- name: Install Dynamic Kernel Module Support
+  apt: pkg={{ item }}
+  with_items:
+  - linux-headers-{{ ansible_kernel }}
+  - dkms
+  become: yes
+
+- name: Download vagrant .deb
+  get_url: url=https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.deb dest=~/Installs/vagrant_2.0.1_x86_64.deb checksum=sha256:2f9498a83b3d650fcfcfe0ec7971070fcd3803fad6470cf7da871caf2564d84f
+  register: get_url_result
+  until: get_url_result | succeeded
+  retries: 3
+  delay: 1
+
 - name: Install vagrant
-  apt: pkg=vagrant
+  apt: deb=/tmp/Installs/vagrant_2.0.1_x86_64.deb
   become: yes
