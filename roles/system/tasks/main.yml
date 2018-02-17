@@ -31,3 +31,23 @@
 - name: Install avahi
   apt: pkg=avahi-daemon
   become: yes
+
+- name: Install whois
+  apt: pkg=whois
+  become: yes
+
+- name: Install HTTPie cURL wrapper
+  apt: pkg=httpie
+  become: yes
+
+- name: Install lynx command line browser
+  apt: pkg=lynx
+  become: yes
+
+- name: Install NCurses Disk Usage utility
+  apt: pkg=ncdu
+  become: yes
+
+- name: Install wondershaper for limiting adapter bandwidth
+  apt: pkg=wondershaper
+  become: yes
