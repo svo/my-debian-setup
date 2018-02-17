@@ -1,0 +1,39 @@
+- name: Install htop for process monitoring
+  apt: pkg=htop
+  become: yes
+
+- name: Install smem for memory monitoring
+  apt: pkg=smem
+  become: yes
+
+- name: Install iftop for network monitoring
+  apt: pkg=iftop
+  become: yes
+
+- name: Install iotop for disk I/O monitoring
+  apt: pkg=iotop
+  become: yes
+
+- name: Install Wireshark
+  apt: pkg=wireshark
+  become: yes
+
+- name: Install whois
+  apt: pkg=whois
+  become: yes
+
+- name: Install HTTPie cURL wrapper
+  apt: pkg=httpie
+  become: yes
+
+- name: Install lynx command line browser
+  apt: pkg=lynx
+  become: yes
+
+- name: Install NCurses Disk Usage utility
+  apt: pkg=ncdu
+  become: yes
+
+- name: Install wondershaper for limiting adapter bandwidth
+  apt: pkg=wondershaper
+  become: yes

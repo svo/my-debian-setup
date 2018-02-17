@@ -21,6 +21,7 @@
     - source-control
     - vim
     - system
+    - monitoring
     - configuration-management
     - internet
     - media
