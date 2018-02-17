@@ -51,3 +51,7 @@
 - name: Install wondershaper for limiting adapter bandwidth
   apt: pkg=wondershaper
   become: yes
+
+- name: Install Synapse launcher
+  apt: pkg=synapse
+  become: yes
