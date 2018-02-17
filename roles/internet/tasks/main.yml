@@ -1,3 +1,7 @@
+- name: Install OpenVPN
+  apt: pkg=openvpn
+  become: yes
+
 - name: Install chromium web browser
   apt: pkg=chromium
   become: yes
