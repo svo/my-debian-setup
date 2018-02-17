@@ -1,0 +1,7 @@
+- name: Install tor anonymizing overlay network for TCP
+  apt: pkg=tor
+  become: yes
+
+- name: Disable tor startup
+  shell: update-rc.d tor disable
+  become: yes
