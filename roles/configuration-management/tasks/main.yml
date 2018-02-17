@@ -33,3 +33,10 @@
 - name: Install vagrant
   apt: deb=/tmp/Installs/vagrant_2.0.1_x86_64.deb
   become: yes
+
+- name: Install vim plugins
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  with_items:
+    - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
+    - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}
+    - {repo: "https://github.com/rodjek/vim-puppet.git", dest: vim-puppet}
