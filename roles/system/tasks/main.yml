@@ -1,0 +1,18 @@
+- name: Install lshw for listing hardware details
+  apt: pkg=lshw
+  become: yes
+
+- name: Install wicd for network management
+  apt: pkg=wicd-gtk
+  become: yes
+
+- name: Remove gnome default network management 
+  apt: pkg={{ item }} state=absent
+  with_items:
+  - network-manager-gnome
+  - network-manager
+  become: yes
+
+- name: Install tmux terminal multiplexer
+  apt: pkg=tmux
+  become: yes
