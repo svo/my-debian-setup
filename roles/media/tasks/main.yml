@@ -17,3 +17,7 @@
 - name: Install shutter screenshot tool
   apt: pkg=shutter
   become: yes
+
+- name: Install GIMP photo editor
+  apt: pkg=gimp
+  become: yes
