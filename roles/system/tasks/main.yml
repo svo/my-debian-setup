@@ -16,3 +16,10 @@
 - name: Install tmux terminal multiplexer
   apt: pkg=tmux
   become: yes
+
+- name: Install i3 windows manager
+  apt: pkg={{ item }}
+  with_items:
+  - i3
+  - suckless-tools
+  become: yes
