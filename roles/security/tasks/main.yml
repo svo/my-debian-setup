@@ -5,3 +5,7 @@
 - name: Disable tor startup
   shell: update-rc.d tor disable
   become: yes
+
+- name: Install nmap for network discovery and security auditing
+  apt: pkg=nmap
+  become: yes
