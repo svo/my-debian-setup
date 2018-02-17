@@ -62,6 +62,10 @@
   copy: src=/tmp/packer dest=/usr/local/bin remote_src=yes mode=0755
   become: yes
 
+- name: Install awscli
+  pip: name=awscli
+  become: yes
+
 - name: Install vim plugins
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
   with_items:
