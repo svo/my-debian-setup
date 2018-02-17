@@ -1,0 +1,16 @@
+---
+- hosts: all
+
+  pre_tasks:
+
+    - name: Install apt-transport-https
+      apt: pkg=apt-transport-https
+      become: yes
+
+  roles:
+    - source-control
+    - vim
+    - system
+    - configuration-management
+    - internet
+    - media
