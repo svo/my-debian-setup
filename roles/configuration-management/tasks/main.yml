@@ -48,6 +48,20 @@
   copy: src=/tmp/terraform dest=/usr/local/bin remote_src=yes mode=0755
   become: yes
 
+- name: Get Packer installer
+  get_url: url=https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_linux_amd64.zip dest=~/Installs/packer_1.2.0_linux_amd64.zip
+  register: packer_get_url_result
+  until: packer_get_url_result | succeeded
+  retries: 3
+  delay: 1
+
+- name: Unarchive Packer
+  unarchive: src=~/Installs/packer_1.2.0_linux_amd64.zip remote_src=yes dest=/tmp
+
+- name: Install packer
+  copy: src=/tmp/packer dest=/usr/local/bin remote_src=yes mode=0755
+  become: yes
+
 - name: Install vim plugins
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
   with_items:
