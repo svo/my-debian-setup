@@ -1,0 +1,14 @@
+
+- name: Get nodejs setup script
+  get_url: url=https://deb.nodesource.com/setup_8.x dest=~/Installs/nodejs-installer
+
+- name: Setup nodejs
+  command: /bin/bash /tmp/Installs/nodejs-installer
+  become: yes
+
+- name: Install nodejs
+  apt: pkg=nodejs
+  become: yes
+
+- name: Install vim plugins
+  git: repo=https://github.com/pangloss/vim-javascript.git dest=~/.vim/bundle/vim-javascript
