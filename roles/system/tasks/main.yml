@@ -55,3 +55,7 @@
 - name: Install Synapse launcher
   apt: pkg=synapse
   become: yes
+
+- name: Install apt file
+  apt: pkg=apt-file
+  become: yes
