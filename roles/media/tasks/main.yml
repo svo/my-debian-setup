@@ -21,3 +21,7 @@
 - name: Install GIMP photo editor
   apt: pkg=gimp
   become: yes
+
+- name: Install handbrake video converter
+  apt: pkg=handbrake
+  become: yes
