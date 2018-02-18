@@ -1,0 +1,14 @@
+- name: Install rbenv ruby version control
+  apt: pkg={{ item }}
+  become: yes
+  with_items:
+  - rbenv
+  - ruby-build
+
+- name: Add rbenv to .bashrc
+  lineinfile: dest=~/.bashrc line='eval "$(rbenv init -)"'
+
+- name: Install vim plugin
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
+  with_items:
+  - { repo: "https://github.com/vim-ruby/vim-ruby.git", name: vim-ruby }
