@@ -25,3 +25,7 @@
 - name: Install ncrack network authentication cracking tool
   apt: pkg=ncrack
   become: yes
+
+- name: Install skipfish web application security reconnaissance tool
+  apt: pkg=skipfish
+  become: yes
