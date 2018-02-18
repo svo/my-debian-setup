@@ -17,6 +17,10 @@
       apt: pkg=python-pip
       become: yes
 
+    - name: Install unzip
+      apt: pkg=unzip
+      become: yes
+
   roles:
     - source-control
     - vim
