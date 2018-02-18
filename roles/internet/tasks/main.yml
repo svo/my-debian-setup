@@ -5,3 +5,15 @@
 - name: Install chromium web browser
   apt: pkg=chromium
   become: yes
+
+- name: Add google apt key
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub
+  become: yes
+
+- name: Add google apt repository
+  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' update_cache=yes
+  become: yes
+
+- name: Install chrome web browser
+  apt: pkg=google-chrome-stable
+  become: yes
