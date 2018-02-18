@@ -33,3 +33,39 @@
 - name: Install grabber web application scanner
   apt: pkg=grabber
   become: yes
+
+- name: Install XSSer to detect, exploit and report on XSS vulnerabilities
+  apt: pkg=xsser
+  become: yes
+
+- name: Install rainbowcrack
+  apt: pkg=rainbowcrack
+  become: yes
+
+- name: Install theHarvester e-mail account and subdomain discovery tool
+  apt: pkg=theharvester
+  become: yes
+
+- name: Install hping3 network smashing tool
+  apt: pkg=hping3
+  become: yes
+
+- name: Install slowhttptest network smashing tool
+  apt: pkg=slowhttptest
+  become: yes
+
+- name: Install netstress network activity benchmarking tool
+  apt: pkg=netstress
+  become: yes
+
+- name: Install ApacheBench
+  apt: pkg=apache2-utils
+  become: yes
+
+- name: Install siege HTTP/HTTPS stress tester
+  apt: pkg=siege
+  become: yes
+
+- name: Install mitmproxy for interactive examination and modification of HTTP traffic
+  apt: pkg=mitmproxy
+  become: yes
