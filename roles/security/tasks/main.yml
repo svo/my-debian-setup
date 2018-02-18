@@ -29,3 +29,7 @@
 - name: Install skipfish web application security reconnaissance tool
   apt: pkg=skipfish
   become: yes
+
+- name: Install grabber web application scanner
+  apt: pkg=grabber
+  become: yes
