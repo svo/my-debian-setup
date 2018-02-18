@@ -24,7 +24,8 @@
     - security
     - monitoring
     - configuration-management
-    - internet
     - media
     - clojure
     - nodejs
+    - internet
+    - administration

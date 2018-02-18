@@ -1,0 +1,8 @@
+- name: Install gnote note taking application
+  apt: pkg=gnote
+  become: yes
+
+- name: Install TaskWarrior To-Do
+  apt: pkg=taskwarrior
+  become: yes
+
