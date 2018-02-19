@@ -32,3 +32,7 @@
 - name: Install franz
   apt: deb=/tmp/Installs/franz_5.0.0-beta.15_amd64.deb
   become: yes
+
+- name: Install Deluge BitTorrent client
+  apt: pkg=deluge
+  become: yes
