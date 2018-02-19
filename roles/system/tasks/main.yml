@@ -13,6 +13,10 @@
   - network-manager
   become: yes
 
+- name: Install terminator terminal emulator
+  apt: pkg=terminator
+  become: yes
+
 - name: Install tmux terminal multiplexer
   apt: pkg=tmux
   become: yes
