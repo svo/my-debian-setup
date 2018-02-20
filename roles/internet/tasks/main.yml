@@ -6,10 +6,6 @@
   apt: pkg=chromium
   become: yes
 
-- name: Install TorBrowser
-  apt: pkg=torbrowser-launcher
-  become: yes
-
 - name: Add google apt key
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub
   become: yes

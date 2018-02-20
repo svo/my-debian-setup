@@ -64,10 +64,6 @@
   apt: pkg=apt-file
   become: yes
 
-- name: Install DropBox
-  apt: pkg=nautilus-dropbox
-  become: yes
-
 - name: Install locate
   apt: pkg=mlocate
   become: yes

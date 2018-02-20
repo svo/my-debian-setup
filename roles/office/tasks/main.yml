@@ -5,7 +5,3 @@
 - name: Install TaskWarrior To-Do
   apt: pkg=taskwarrior
   become: yes
-
-- name: Install dbeaver database manager/client
-  apt: pkg=dbeaver
-  become: yes
