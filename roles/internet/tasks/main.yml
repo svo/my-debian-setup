@@ -18,6 +18,18 @@
   apt: pkg=google-chrome-stable
   become: yes
 
+- name: Add stretch-backports repository to provide torbrowser-launcher
+  apt_repository: repo="deb http://deb.debian.org/debian stretch-backports main contrib" update_cache=yes
+  become: yes
+
+- name: Install TOR browser
+  apt: pkg=torbrowser-launcher
+  become: yes
+
+- name: Disable stretch-backports repository to provide torbrowser-launcher
+  apt_repository: repo="deb http://deb.debian.org/debian stretch-backports main contrib" state=absent update_cache=yes
+  become: yes
+
 - name: Download franz .deb
   get_url: url=https://github.com/meetfranz/franz/releases/download/v5.0.0-beta.15/franz_5.0.0-beta.15_amd64.deb dest=~/Installs/franz_5.0.0-beta.15_amd64.deb
   register: get_url_result
