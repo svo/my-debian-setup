@@ -34,6 +34,10 @@
   apt: deb=/tmp/Installs/vagrant_2.0.1_x86_64.deb
   become: yes
 
+- name: Configure VirtualBox for Vagrant
+  command: /sbin/vboxconfig
+  become: yes
+
 - name: Download Terraform installation resource
   get_url: url=https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip dest=~/Installs/terraform_0.11.3_linux_amd64.zip checksum=sha256:6b8a7b83954597d36bbed23913dd51bc253906c612a070a21db373eab71b277b
   register: terraform_get_url_result
