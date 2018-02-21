@@ -9,7 +9,7 @@
   become: yes
 
 - name: Add VirtualBox repository
-  apt_repository: repo='deb https://download.virtualbox.org/virtualbox/debian stretch contrib' update_cache=yes
+  apt_repository: repo='deb https://download.virtualbox.org/virtualbox/debian stretch contrib non-free' update_cache=yes
   become: yes
 
 - name: Install VirtualBox
@@ -32,10 +32,6 @@
 
 - name: Install vagrant
   apt: deb=/tmp/Installs/vagrant_2.0.1_x86_64.deb
-  become: yes
-
-- name: Configure VirtualBox for Vagrant
-  command: /sbin/vboxconfig
   become: yes
 
 - name: Download Terraform installation resource
