@@ -12,15 +12,15 @@
   apt_repository: repo='deb https://download.virtualbox.org/virtualbox/debian stretch contrib non-free' update_cache=yes
   become: yes
 
-- name: Install VirtualBox
-  apt: pkg=virtualbox-5.2
-  become: yes
-
 - name: Install Dynamic Kernel Module Support
   apt: pkg={{ item }}
   with_items:
   - linux-headers-{{ ansible_kernel }}
   - dkms
+  become: yes
+
+- name: Install VirtualBox
+  apt: pkg=virtualbox-5.2
   become: yes
 
 - name: Download vagrant .deb
