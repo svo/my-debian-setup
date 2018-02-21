@@ -15,11 +15,11 @@
   become: yes
 
 - name: Add kali repository
-  apt_repository: repo="deb http://http.kali.org/kali kali-rolling main contrib non-free"
+  apt_repository: repo="deb http://http.kali.org/kali kali-rolling main contrib non-free" update_cache=yes
   become: yes
 
 - name: Install dnsmap for brute force DNS name discovery
-  apt: pkg=dnsmap update_cache=yes
+  apt: pkg=dnsmap
   become: yes
 
 - name: Install ncrack network authentication cracking tool
