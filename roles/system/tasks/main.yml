@@ -21,6 +21,10 @@
   apt: pkg=tmux
   become: yes
 
+- name: Install Midnight Commander file manager
+  apt: pkg=mc
+  become: yes
+
 - name: Install i3 windows manager
   apt: pkg={{ item }}
   with_items:
