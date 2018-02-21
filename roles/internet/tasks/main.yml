@@ -11,7 +11,7 @@
   become: yes
 
 - name: Add google apt repository
-  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' update_cache=yes
+  apt_repository: repo='deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' filename=google-chrome update_cache=yes
   become: yes
 
 - name: Install chrome web browser
