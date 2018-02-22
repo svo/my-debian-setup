@@ -17,6 +17,12 @@
   apt: pkg=terminator
   become: yes
 
+- name: Create terminator configuration directory
+  file: path=~/.config/terminator state=directory
+
+- name: Copy terminator configuration
+  copy: src=terminator.config dest=~/.config/terminator/config
+
 - name: Install tmux terminal multiplexer
   apt: pkg=tmux
   become: yes
