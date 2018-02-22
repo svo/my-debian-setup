@@ -81,3 +81,25 @@
 - name: Install icdiff side by side diff tool
   apt: pkg=icdiff
   become: yes
+
+- name: Add non-free repository to provide DropBox
+  lineinfile:
+    dest: /etc/apt/sources.list
+    regexp: '^deb http:\/\/.*stretch main'
+    line: 'deb http://ftp.iinet.net.au/debian/debian/ stretch main non-free'
+  become: yes
+
+- name: Install DropBox
+  apt: pkg=nautilus-dropbox update_cache=yes
+  become: yes
+
+- name: Disable non-free repository to provide DropBox
+  lineinfile:
+    dest: /etc/apt/sources.list
+    regexp: '^deb http:\/\/.*stretch main non-free'
+    line: 'deb http://ftp.iinet.net.au/debian/debian/ stretch main'
+  become: yes
+
+- name: Update apt cache
+  apt: update_cache=yes
+  become: yes
