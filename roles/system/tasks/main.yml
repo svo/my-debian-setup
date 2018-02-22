@@ -66,8 +66,8 @@
   apt: pkg=wondershaper
   become: yes
 
-- name: Install Synapse launcher
-  apt: pkg=synapse
+- name: Install Kupfer launcher
+  apt: pkg=kupfer
   become: yes
 
 - name: Install apt file
