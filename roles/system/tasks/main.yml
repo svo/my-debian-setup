@@ -103,3 +103,11 @@
 - name: Update apt cache
   apt: update_cache=yes
   become: yes
+
+- name: Install duplicity for backup
+  apt: pkg=duplicity
+  become: yes
+
+- name: Install Déjà Dup for backup
+  apt: pkg=deja-dup
+  become: yes
