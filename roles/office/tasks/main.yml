@@ -5,3 +5,7 @@
 - name: Install TaskWarrior To-Do
   apt: pkg=taskwarrior
   become: yes
+
+- name: Install PlantUML diagramming tool
+  apt: pkg=plantuml
+  become: yes
