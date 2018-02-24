@@ -6,6 +6,10 @@
   apt: pkg=taskwarrior
   become: yes
 
+- name: Install TaskWarrior terminal interface
+  apt: pkg=vit
+  become: yes
+
 - name: Install PlantUML diagramming tool
   apt: pkg=plantuml
   become: yes
