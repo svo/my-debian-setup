@@ -18,6 +18,7 @@
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
   with_items:
   - {repo: "https://github.com/scrooloose/nerdtree.git", name: nerdtree}
+  - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", name: nerdtree-git-plugin}
   - {repo: "https://github.com/ctrlpvim/ctrlp.vim.git", name: ctrlp}
   - {repo: "https://github.com/ntpeters/vim-better-whitespace.git", name: vim-better-whitespace}
   - {repo: "https://github.com/airblade/vim-gitgutter.git", name: vim-gitgutter}
@@ -39,9 +40,14 @@
   - :set noswapfile
   - let g:ctrlp_map = '<c-p>'
   - let g:ctrlp_cmd = 'CtrlP'
-  - autocmd BufEnter * EnableStripWhitespaceOnSave
   - let g:vim_markdown_folding_style_pythonic = 1
-
+  - map <C-n> :NERDTreeToggle<CR>
+  - autocmd BufEnter * EnableStripWhitespaceOnSave
+  - autocmd vimenter * NERDTree
+  - autocmd StdinReadPre * let s:std_in=1
+  - autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  - autocmd StdinReadPre * let s:std_in=1
+  - autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 - name: Install YouCompleteMe build requirements
   apt: pkg={{ item }}
