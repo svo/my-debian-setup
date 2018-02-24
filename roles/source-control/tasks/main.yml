@@ -1,3 +1,6 @@
 - name: Install git
   apt: pkg=git-core
   become: yes
+
+- name: Set vim as git editor
+  git_config: name=core.editor scope=global value=vim
