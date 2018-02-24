@@ -38,8 +38,8 @@
       become: yes
 
   roles:
-    - vim
     - source-control
+    - vim
     - system
     - security
     - monitoring

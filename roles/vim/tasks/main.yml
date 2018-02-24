@@ -53,3 +53,6 @@
 
 - name: Install YouCompleteMe
   shell: ./install.py chdir=~/.vim/bundle/YouCompleteMe
+
+- name: Set vim as git editor
+  git_config: name=core.editor scope=global value=vim
