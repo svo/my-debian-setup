@@ -1,0 +1,34 @@
+- name: Add non-free repository to provide nvidia drivers
+  lineinfile:
+    dest: /etc/apt/sources.list
+    regexp: '^deb http.* stretch main'
+    line: 'deb http://ftp.iinet.net.au/debian/debian/ stretch main contrib non-free'
+  become: yes
+
+- name: Install nvidia-detect
+  apt: pkg=nvidia-detect update_cache=yes
+  become: yes
+
+- name: Install nvidia-driver
+  apt: pkg=nvidia-driver
+  become: yes
+
+- name: Install nvidia-xconfig
+  apt: pkg=nvidia-xconfig
+  become: yes
+
+- name: Run nvidia-xconfig
+  command: nvidia-xconfig
+  become: yes
+
+- name: Disable non-free repository to provide nvidia drivers
+  lineinfile:
+    dest: /etc/apt/sources.list
+    regexp: '^deb http.* stretch main*'
+    line: 'deb http://ftp.iinet.net.au/debian/debian/ stretch main'
+  become: yes
+
+- name: Update apt cache
+  apt: update_cache=yes
+  become: yes
+
