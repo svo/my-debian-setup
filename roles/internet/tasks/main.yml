@@ -44,3 +44,20 @@
 - name: Install Deluge BitTorrent client
   apt: pkg=deluge
   become: yes
+
+- name: Install postman installer/updater
+  npm: name=postman-updater-linux version=0.0.2 global=yes
+  become: yes
+
+- name: Check if postman installed
+  command: postman-updater check
+  register: postman_installed
+
+- name: Install postman
+  command: postman-updater install
+  when: postman_installed.stdout == 'No local installation of Postman found!'
+  become: yes
+
+- name: Create symlink for Postman executable
+  file: src=/opt/postman/Postman dest=/usr/bin/postman state=link
+  become: yes
