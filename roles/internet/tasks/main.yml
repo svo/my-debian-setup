@@ -61,3 +61,7 @@
 - name: Create symlink for Postman executable
   file: src=/opt/postman/Postman dest=/usr/bin/postman state=link
   become: yes
+
+- name: Install uGet download manager
+  apt: pkg=uget
+  become: yes
