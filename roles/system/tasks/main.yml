@@ -111,3 +111,7 @@
 - name: Install Déjà Dup for backup
   apt: pkg=deja-dup
   become: yes
+
+- name: Install NFS
+  apt: pkg=nfs-kernel-server
+  become: yes
