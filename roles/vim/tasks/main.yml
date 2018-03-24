@@ -3,7 +3,17 @@
   with_items:
   - vim
   - vim-nox
+  - vim-addon-manager
   become: yes
+
+- name: Install vim plugin packages
+  apt: pkg=vim-{{ item }}
+  with_items: "{{ vim_plugin_package }}"
+  become: yes
+
+- name: Install vim plugins
+  command: vam install {{ item }}
+  with_items: "{{ vim_plugin_package }}"
 
 - name: Setup paths for vim
   file: path={{ item }} state=directory
@@ -11,20 +21,15 @@
   - ~/.vim/autoload
   - ~/.vim/bundle
 
-- name: Install pathogen
-  get_url: url=https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim dest=~/.vim/autoload/pathogen.vim
-
 - name: Install vim plugin
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
   with_items:
   - {repo: "https://github.com/scrooloose/nerdtree.git", name: nerdtree}
   - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", name: nerdtree-git-plugin}
-  - {repo: "https://github.com/ctrlpvim/ctrlp.vim.git", name: ctrlp}
   - {repo: "https://github.com/ntpeters/vim-better-whitespace.git", name: vim-better-whitespace}
   - {repo: "https://github.com/airblade/vim-gitgutter.git", name: vim-gitgutter}
   - {repo: "https://github.com/plasticboy/vim-markdown.git", name: vim-markdown}
   - {repo: "https://github.com/IN3D/vim-raml.git", name: vim-raml}
-  - {repo: "https://github.com/Valloric/YouCompleteMe.git", name: YouCompleteMe}
   - {repo: "https://github.com/aklt/plantuml-syntax.git", name: plantuml-syntax}
 
 - name: Update .vimrc
@@ -38,22 +43,9 @@
   - :set expandtab
   - :set nobackup
   - :set noswapfile
-  - let g:ctrlp_map = '<c-p>'
-  - let g:ctrlp_cmd = 'CtrlP'
   - let g:vim_markdown_folding_style_pythonic = 1
   - map <C-n> :NERDTreeToggle<CR>
   - autocmd BufEnter * EnableStripWhitespaceOnSave
-
-- name: Install YouCompleteMe build requirements
-  apt: pkg={{ item }}
-  with_items:
-  - build-essential
-  - cmake
-  - python-dev
-  become: yes
-
-- name: Install YouCompleteMe
-  shell: ./install.py chdir=~/.vim/bundle/YouCompleteMe
 
 - name: Set vim as git editor
   git_config: name=core.editor scope=global value=vim

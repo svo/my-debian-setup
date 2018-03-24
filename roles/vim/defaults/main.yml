@@ -1,0 +1,5 @@
+  vim_plugin_package:
+    - pathogen
+    - ctrlp
+    - youcompleteme
+    - syntastic
