@@ -1,0 +1,11 @@
+- name: Add minecraft installer apt key
+  apt_key: url=https://grahamedgecombe.com/repo.asc validate_certs=no
+  become: yes
+
+- name: Add minecraft installer apt repository
+  apt_repository: repo='deb http://apt.grahamedgecombe.com/ stretch main' filename=minecraft update_cache=yes
+  become: yes
+
+- name: Install minecraft installer
+  apt: pkg=minecraft-installer
+  become: yes
