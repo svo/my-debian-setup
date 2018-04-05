@@ -1,5 +1,9 @@
 - name: Install ansible
-  apt: pkg=ansible
+  pip: name=ansible version=2.4.3.0
+  become: yes
+
+- name: Install pywinrm for ansible windows provisioning
+  pip: name=pywinrm version=0.3.0
   become: yes
 
 - name: Add VirtualBox repository key

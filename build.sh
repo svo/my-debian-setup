@@ -1,9 +1,11 @@
 #!/bin/bash
 
 sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get install -y plymouth plymouth-themes python-pip
 
-sudo apt-get install -y ansible
-sudo apt-get install -y plymouth plymouth-themes
+sudo -H pip install --upgrade pip
+sudo -H pip install ansible==2.4.3.0
 
 ansible-playbook -i "localhost," -c local -K playbook.yml
 

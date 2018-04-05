@@ -33,6 +33,10 @@
       apt: pkg=python-pip
       become: yes
 
+    - name: Upgrade pip
+      pip: name=pip extra_args=--upgrade
+      become: yes
+
     - name: Install unzip
       apt: pkg=unzip
       become: yes
