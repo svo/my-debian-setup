@@ -115,3 +115,14 @@
 - name: Install NFS
   apt: pkg=nfs-kernel-server
   become: yes
+
+- name: Install hfsprogs for HFS filesystem support
+  apt: pkg=hfsprogs
+  become: yes
+
+- name: Install gpart/ed partition
+  apt: pkg={{ item }}
+  with_items:
+  - gpart
+  - gparted
+  become: yes
