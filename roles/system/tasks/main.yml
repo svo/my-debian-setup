@@ -126,3 +126,7 @@
   - gpart
   - gparted
   become: yes
+
+- name: Install expect for automating shell interaction
+  apt: pkg=expect
+  become: yes
