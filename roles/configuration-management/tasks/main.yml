@@ -28,14 +28,14 @@
   become: yes
 
 - name: Download vagrant .deb
-  get_url: url=https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.deb dest=~/Installs/vagrant_2.0.1_x86_64.deb checksum=sha256:2f9498a83b3d650fcfcfe0ec7971070fcd3803fad6470cf7da871caf2564d84f
+  get_url: url=https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb dest=~/Installs/vagrant_2.1.2_x86_64.deb checksum=sha256:f614a60b258a856322f23d33a24201d26ab2555d047814fec403e834eb7d62b4
   register: get_url_result
   until: get_url_result | succeeded
   retries: 3
   delay: 1
 
 - name: Install vagrant
-  apt: deb=/tmp/Installs/vagrant_2.0.1_x86_64.deb
+  apt: deb=/tmp/Installs/vagrant_2.1.2_x86_64.deb
   become: yes
 
 - name: Download Terraform installation resource
