@@ -1,3 +1,37 @@
 - name: Install git
   apt: pkg=git-core
   become: yes
+
+- name: Setup terminal for git
+  blockinfile:
+    path: ~/.bashrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
+    create: yes
+    block: |
+      export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
+      export GIT_PS1_DESCRIBE_STYLE=branch
+      export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" " \\\$ "'
+      export GIT_PS1_SHOWCOLORHINTS=1
+
+- name: Setup git colors
+  blockinfile:
+    path: ~/.gitconfig
+    create: yes
+    block: |
+      [color]
+              branch = auto
+              diff = auto
+              status = auto
+      [color "branch"]
+              current = yellow reverse
+              local = yellow
+              remote = green
+      [color "diff"]
+              meta = yellow bold
+              frag = magenta bold
+              old = red bold
+              new = green bold
+      [color "status"]
+              added = yellow
+              changed = green
+              untracked = cyan
