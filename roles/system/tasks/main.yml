@@ -6,6 +6,14 @@
   apt: pkg=wicd-gtk
   become: yes
 
+- name: Install network bridge utils
+  apt: pkg=bridge-utils
+  become: yes
+
+- name: Install dnsmasq
+  apt: pkg=dnsmasq
+  become: yes
+
 - name: Remove gnome default network management
   apt: pkg={{ item }} state=absent
   with_items:
