@@ -2,10 +2,6 @@
   apt: pkg=lshw
   become: yes
 
-- name: Install wicd for network management
-  apt: pkg=wicd-gtk state=absent
-  become: yes
-
 - name: Install network bridge utils
   apt: pkg=bridge-utils
   become: yes
@@ -14,7 +10,7 @@
   apt: pkg=dnsmasq
   become: yes
 
-- name: Install gnome default network management
+- name: Install gnome network management
   apt: pkg={{ item }}
   with_items:
   - network-manager-gnome
