@@ -1,6 +1,9 @@
 ---
 - hosts: all
 
+  vars:
+    current_user: "{{ ansible_user_id }}"
+
   pre_tasks:
 
     - name: Make sure kali repository is disabled
@@ -56,3 +59,11 @@
     - office
     - nvidia
     - game
+    - docker
+    - docker-compose
+
+  post_tasks:
+
+    - name: Add docker group for user
+      user: name={{ current_user }} groups=docker append=yes
+      become: yes

@@ -1,0 +1,18 @@
+- name: Install required packages
+  apt: name={{ item }} update_cache=yes
+  become: yes
+  with_items:
+  - python-pip
+  - software-properties-common
+
+- name: Upgrade pip
+  pip: name=pip state=latest extra_args=--upgrade
+  become: yes
+
+- name: Install setuptools
+  pip: name=setuptools state=latest
+  become: yes
+
+- name: Install docker-compose
+  pip: name=docker-compose
+  become: yes
