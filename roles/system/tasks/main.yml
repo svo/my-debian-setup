@@ -3,7 +3,7 @@
   become: yes
 
 - name: Install wicd for network management
-  apt: pkg=wicd-gtk
+  apt: pkg=wicd-gtk state=absent
   become: yes
 
 - name: Install network bridge utils
@@ -14,8 +14,8 @@
   apt: pkg=dnsmasq
   become: yes
 
-- name: Remove gnome default network management
-  apt: pkg={{ item }} state=absent
+- name: Install gnome default network management
+  apt: pkg={{ item }}
   with_items:
   - network-manager-gnome
   - network-manager
