@@ -134,3 +134,7 @@
 - name: Install expect for automating shell interaction
   apt: pkg=expect
   become: yes
+
+- name: Install fdupes for finding duplicate files on filesystem
+  apt: pkg=fdupes
+  become: yes
