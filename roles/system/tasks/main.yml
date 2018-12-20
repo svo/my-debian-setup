@@ -138,3 +138,7 @@
 - name: Install fdupes for finding duplicate files on filesystem
   apt: pkg=fdupes
   become: yes
+
+- name: Install fslint for finding duplicate files on filesystem
+  apt: pkg=fslint
+  become: yes
