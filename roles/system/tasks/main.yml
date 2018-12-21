@@ -17,6 +17,14 @@
   - network-manager
   become: yes
 
+- name: Install wireless tools
+  apt: pkg=wireless-tools
+  become: yes
+
+- name: Install graphical wireless scanner
+  apt: pkg=linssid
+  become: yes
+
 - name: Install terminator terminal emulator
   apt: pkg=terminator
   become: yes
