@@ -9,3 +9,10 @@
 - name: Install minecraft installer
   apt: pkg=minecraft-installer
   become: yes
+
+- name: Install TechnicLauncher
+  get_url: url=http://launcher.technicpack.net/launcher4/402/TechnicLauncher.jar dest=~/Installs remote_src=yes mode=0755
+  register: get_url_result
+  until: get_url_result | succeeded
+  retries: 3
+  delay: 1
