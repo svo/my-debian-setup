@@ -70,16 +70,20 @@
   apt: pkg=lynx
   become: yes
 
-- name: Install NCurses Disk Usage utility
+- name: Install NCurses disk Usage utility
   apt: pkg=ncdu
   become: yes
 
-- name: Install k4dirstat Disk Usage utility
+- name: Install k4dirstat disk Usage utility
   apt: pkg=k4dirstat
   become: yes
 
-- name: Install smartmontools Disk utility
+- name: Install smartmontools disk utility
   apt: pkg=smartmontools
+  become: yes
+
+- name: Install testdisk disk utility
+  apt: pkg=testdisk
   become: yes
 
 - name: Install wondershaper for limiting adapter bandwidth
