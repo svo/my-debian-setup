@@ -78,6 +78,10 @@
   apt: pkg=k4dirstat
   become: yes
 
+- name: Install smartmontools Disk utility
+  apt: pkg=smartmontools
+  become: yes
+
 - name: Install wondershaper for limiting adapter bandwidth
   apt: pkg=wondershaper
   become: yes
