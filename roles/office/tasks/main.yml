@@ -17,7 +17,3 @@
 - name: Install cloc for counting lines of code
   apt: pkg=cloc
   become: yes
-
-- name: Install Electron Packager
-  npm: name=electron-packager version=13.0.1 global=yes
-  become: yes

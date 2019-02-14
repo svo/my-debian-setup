@@ -10,5 +10,9 @@
   apt: pkg=nodejs
   become: yes
 
+- name: Install Electron Packager
+  npm: name=electron-packager version=13.0.1 global=yes
+  become: yes
+
 - name: Install vim plugins
   git: repo=https://github.com/pangloss/vim-javascript.git dest=~/.vim/bundle/vim-javascript
