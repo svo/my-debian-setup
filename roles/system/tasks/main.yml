@@ -162,3 +162,17 @@
 - name: Install fslint for finding duplicate files on filesystem
   apt: pkg=fslint
   become: yes
+
+- name: Install bc command line calculator
+  apt: pkg=bc
+  become: yes
+
+- name: Install xclip clipboard utility
+  apt: pkg=xclip
+  become: yes
+
+- name: Add pbcopy/pbpaste alias to bashrc
+  lineinfile: dest=~/.bashrc line={{ item }}
+  with_items:
+  - alias pbcopy='xclip -selection clipboard'
+  - alias pbpaste='xclip -selection clipboard -o'
