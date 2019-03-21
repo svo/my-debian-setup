@@ -1,9 +1,9 @@
 - name: Install ansible
-  pip: name=ansible version=2.4.3.0
+  pip: name=ansible version=2.4.3.0 executable=pip3
   become: yes
 
 - name: Install pywinrm for ansible windows provisioning
-  pip: name=pywinrm version=0.3.0
+  pip: name=pywinrm version=0.3.0 executable=pip3
   become: yes
 
 - name: Add VirtualBox repository key
@@ -67,7 +67,7 @@
   become: yes
 
 - name: Install awscli
-  pip: name=awscli
+  pip: name=awscli executable=pip3
   become: yes
 
 - name: Install vim plugins

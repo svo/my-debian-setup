@@ -2,17 +2,17 @@
   apt: name={{ item }} update_cache=yes
   become: yes
   with_items:
-  - python-pip
+  - python3-pip
   - software-properties-common
 
 - name: Upgrade pip
-  pip: name=pip state=latest extra_args=--upgrade
+  pip: name=pip state=latest extra_args=--upgrade executable=pip3
   become: yes
 
 - name: Install setuptools
-  pip: name=setuptools state=latest
+  pip: name=setuptools state=latest executable=pip3
   become: yes
 
 - name: Install docker-compose
-  pip: name=docker-compose
+  pip: name=docker-compose executable=pip3
   become: yes
