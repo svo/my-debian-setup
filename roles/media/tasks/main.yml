@@ -36,3 +36,7 @@
 - name: Install Auryo
   apt: deb=/tmp/Installs/Auryo_1.4.3_amd64.deb
   become: yes
+
+- name: Install spotify downloader
+  pip: name=spotdl executable=pip3
+  become: yes
