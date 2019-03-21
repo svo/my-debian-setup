@@ -6,10 +6,6 @@
 
   pre_tasks:
 
-    - name: Make sure kali repository is disabled
-      apt_repository: repo="deb http://http.kali.org/kali kali-rolling main contrib non-free" state=absent update_cache=yes
-      become: yes
-
     - name: Install SSH server
       apt: pkg=openssh-server
       become: yes
