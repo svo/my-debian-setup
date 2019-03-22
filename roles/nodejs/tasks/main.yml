@@ -7,7 +7,7 @@
   become: yes
 
 - name: Install nodejs
-  apt: pkg=nodejs
+  apt: pkg=nodejs state=latest
   become: yes
 
 - name: Install Electron Packager
