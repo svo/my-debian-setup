@@ -10,13 +10,6 @@
   apt: pkg=dnsmasq
   become: yes
 
-- name: Install gnome network management
-  apt: pkg={{ item }}
-  with_items:
-  - network-manager-gnome
-  - network-manager
-  become: yes
-
 - name: Install wireless tools
   apt: pkg=wireless-tools
   become: yes
@@ -41,13 +34,6 @@
 
 - name: Install Midnight Commander file manager
   apt: pkg=mc
-  become: yes
-
-- name: Install i3 windows manager
-  apt: pkg={{ item }}
-  with_items:
-  - i3
-  - suckless-tools
   become: yes
 
 - name: Install curl
@@ -76,14 +62,6 @@
 
 - name: Install k4dirstat disk Usage utility
   apt: pkg=k4dirstat
-  become: yes
-
-- name: Install smartmontools disk utility
-  apt: pkg=smartmontools
-  become: yes
-
-- name: Install testdisk disk utility
-  apt: pkg=testdisk
   become: yes
 
 - name: Install wondershaper for limiting adapter bandwidth
