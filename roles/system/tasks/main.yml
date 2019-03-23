@@ -122,6 +122,10 @@
   apt: pkg=hfsprogs
   become: yes
 
+- name: Install ntfs-3g for NTFS filesystem support
+  apt: pkg=ntfs-3g
+  become: yes
+
 - name: Install gpart/ed partition
   apt: pkg={{ item }}
   with_items:
