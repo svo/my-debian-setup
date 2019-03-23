@@ -31,14 +31,14 @@
   become: yes
 
 - name: Download franz .deb
-  get_url: url=https://github.com/meetfranz/franz/releases/download/v5.0.0-beta.15/franz_5.0.0-beta.15_amd64.deb dest=~/Installs/franz_5.0.0-beta.15_amd64.deb
+  get_url: url=https://github.com/meetfranz/franz/releases/download/v5.0.1-beta.1/franz_5.0.1-beta.1_amd64.deb dest=~/Installs/franz_5.0.1-beta.1_amd64.deb
   register: get_url_result
   until: get_url_result | succeeded
   retries: 3
   delay: 1
 
 - name: Install franz
-  apt: deb=/tmp/Installs/franz_5.0.0-beta.15_amd64.deb
+  apt: deb=/tmp/Installs/franz_5.0.1-beta.1_amd64.deb
   become: yes
 
 - name: Install Deluge BitTorrent client
