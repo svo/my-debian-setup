@@ -9,3 +9,7 @@
 - name: Install nmap for network discovery and security auditing
   apt: pkg=nmap
   become: yes
+
+- name: Install dnsrecon for DNS enumeration
+  apt: pkg=dnsrecon
+  become: yes
