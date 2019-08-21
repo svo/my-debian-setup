@@ -14,7 +14,7 @@ unless Vagrant.has_plugin?("vagrant-vbguest")
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "debian/stretch64"
+  config.vm.box = "bento/debian-9"
 
   config.vm.hostname = "development-box-debian"
 
