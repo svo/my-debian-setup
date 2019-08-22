@@ -13,7 +13,7 @@
   become: yes
 
 - name: Add VirtualBox repository
-  apt_repository: repo='deb https://download.virtualbox.org/virtualbox/debian stretch contrib non-free' update_cache=yes
+  apt_repository: repo='deb https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib non-free' update_cache=yes
   become: yes
 
 - name: Install Dynamic Kernel Module Support
