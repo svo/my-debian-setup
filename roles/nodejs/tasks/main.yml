@@ -3,7 +3,7 @@
   become: yes
 
 - name: Install Electron Packager
-  npm: name=electron-packager version=13.0.1 global=yes
+  npm: name=electron-packager version=14.0.4 global=yes
   become: yes
 
 - name: Install vim plugins
