@@ -1,4 +1,3 @@
-
 - name: Install nodejs
   apt: pkg=nodejs,npm state=latest
   become: yes
