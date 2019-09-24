@@ -30,7 +30,11 @@
   become: yes
 
 - name: Install Deluge BitTorrent client
-  apt: pkg=deluge
+  apt: pkg={{ item }}
+  with_items:
+  - deluge
+  - deluged
+  - deluge-console
   become: yes
 
 - name: Install postman installer/updater
