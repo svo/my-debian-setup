@@ -17,10 +17,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "playbook.yml"
   end
 
+  config.vm.provision "shell", inline: 'sudo update-rc.d ssh enable'
+  config.vm.provision "shell", inline: 'sudo apt-get install -y task-xfce-desktop'
+  config.vm.provision "shell", inline: 'sudo systemctl set-default graphical.target'
+
   config.cache.scope = :machine
 
   config.vm.provider :virtualbox do |vb|
     vb.memory = 2048
     vb.cpus = 2
+    vb.gui = true
   end
 end
