@@ -3,7 +3,7 @@
   become: yes
 
 - name: Install JDK
-  apt: pkg=openjdk-8-jdk
+  apt: pkg=default-jdk
   become: yes
 
 - name: Install vim plugin
