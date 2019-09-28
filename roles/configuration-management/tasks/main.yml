@@ -19,7 +19,7 @@
 - name: Install Dynamic Kernel Module Support
   apt: pkg={{ item }}
   with_items:
-  - linux-headers-{{ ansible_kernel }}
+  - linux-headers-amd64
   - dkms
   become: yes
 
