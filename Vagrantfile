@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell", inline: 'sudo update-rc.d ssh enable'
   config.vm.provision "shell", inline: 'sudo apt-get install -y task-xfce-desktop'
-  config.vm.provision "shell", inline: 'sudo systemctl set-default graphical.target'
+  config.vm.provision "shell", inline: 'sudo Xorg -configure && sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf.$(date +%F) && sudo mv /root/xorg.conf.new /etc/X11/xorg.conf'
 
   config.cache.scope = :machine
 
