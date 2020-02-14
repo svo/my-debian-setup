@@ -127,10 +127,7 @@
   become: yes
 
 - name: Install gpart/ed partition
-  apt: pkg={{ item }}
-  with_items:
-  - gpart
-  - gparted
+  apt: pkg=gpart,gparted
   become: yes
 
 - name: Install expect for automating shell interaction

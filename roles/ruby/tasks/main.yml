@@ -1,9 +1,6 @@
 - name: Install rbenv ruby version control
-  apt: pkg={{ item }}
+  apt: pkg=rbenv,ruby-build
   become: yes
-  with_items:
-  - rbenv
-  - ruby-build
 
 - name: Add rbenv to .bashrc
   lineinfile: dest=~/.bashrc line='eval "$(rbenv init -)"'

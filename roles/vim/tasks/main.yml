@@ -1,9 +1,5 @@
 - name: Install vim
-  apt: pkg={{ item }}
-  with_items:
-  - vim
-  - vim-nox
-  - vim-addon-manager
+  apt: pkg=vim,vim-nox,vim-addon-manager
   become: yes
 
 - name: Install vim plugin packages

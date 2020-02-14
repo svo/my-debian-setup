@@ -1,9 +1,6 @@
 
 - name: Install nodejs
-  apt: pkg={{ item }} state=latest
-  with_items:
-  - nodejs
-  - npm
+  apt: pkg=nodejs,npm state=latest
   become: yes
 
 - name: Install Electron Packager

@@ -29,14 +29,18 @@
       become: yes
 
     - name: Install pip
-      apt: pkg={{ item }}
-      with_items:
-      - python3-pip
+      apt: pkg=python3-pip
       become: yes
 
     - name: Upgrade pip
       pip: name=pip extra_args=--upgrade executable=pip3
       become: yes
+
+    - name: Add python3 as python to .bashrc
+      lineinfile: dest=~/.bashrc line='alias python=/usr/bin/python3' create=yes
+
+    - name: Add pip3 as pip to .bash_profile
+      lineinfile: dest=~/.bashrc line='alias pip=/usr/bin/pip3'
 
     - name: Install unzip
       apt: pkg=unzip

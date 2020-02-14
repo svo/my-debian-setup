@@ -24,10 +24,6 @@
 
 - name: Download Auryo .deb
   get_url: url=https://github.com/Superjo149/auryo/releases/download/v1.4.3/Auryo_1.4.3_amd64.deb dest=~/Installs/Auryo_1.4.3_amd64.deb
-  register: get_url_result
-  until: get_url_result | succeeded
-  retries: 3
-  delay: 1
 
 - name: Install Auryo
   apt: deb=/tmp/Installs/Auryo_1.4.3_amd64.deb
