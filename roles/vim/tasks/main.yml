@@ -16,6 +16,14 @@
   with_items:
   - ~/.vim/autoload
   - ~/.vim/bundle
+  - ~/.vim/ftplugin
+
+- name: Set kotlin vim settings
+  copy:
+    dest: ~/.vim/ftplugin/kotlin.vim
+    content: |
+      setlocal  tabstop=4
+      setlocal  shiftwidth=4
 
 - name: Install vim plugin
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
@@ -27,6 +35,9 @@
   - {repo: "https://github.com/plasticboy/vim-markdown.git", name: vim-markdown}
   - {repo: "https://github.com/IN3D/vim-raml.git", name: vim-raml}
   - {repo: "https://github.com/aklt/plantuml-syntax.git", name: plantuml-syntax}
+  - {repo: "https://github.com/tfnico/vim-gradle.git", name: vim-gradle}
+  - {repo: "https://github.com/python-mode/python-mode.git", name: python-mode}
+  - {repo: "https://github.com/udalov/kotlin-vim.git", name: kotlin-vim}
 
 - name: Update .vimrc
   lineinfile: dest=~/.vimrc line={{ item }} create=yes
