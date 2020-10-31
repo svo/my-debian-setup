@@ -1,5 +1,12 @@
+- name: Get nodejs setup script
+  get_url: url=https://deb.nodesource.com/setup_lts.x dest=~/Installs/nodejs-installer
+
+- name: Setup nodejs
+  command: /bin/bash /tmp/Installs/nodejs-installer
+  become: yes
+
 - name: Install nodejs
-  apt: pkg=nodejs,npm state=latest
+  apt: pkg=nodejs state=latest
   become: yes
 
 - name: Install Electron Packager
