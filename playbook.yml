@@ -36,8 +36,21 @@
       pip: name=pip extra_args=--upgrade executable=pip3
       become: yes
 
-    - name: Add python3 as python to .bashrc
-      lineinfile: dest=~/.bashrc line='alias python=/usr/bin/python3' create=yes
+    - name: setup python2 alternative
+      alternatives:
+        name: python
+        path: /usr/bin/python2
+        link: /usr/bin/python
+        priority: 1
+      become: yes
+
+    - name: setup python3 alternative
+      alternatives:
+        name: python
+        path: /usr/bin/python3
+        link: /usr/bin/python
+        priority: 2
+      become: yes
 
     - name: Add pip3 as pip to .bash_profile
       lineinfile: dest=~/.bashrc line='alias pip=/usr/bin/pip3'
