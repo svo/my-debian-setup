@@ -1,3 +1,7 @@
+- name: Install snap daemon
+  apt: pkg=snapd
+  become: yes
+
 - name: Install ansible
   pip: name=ansible executable=pip3
   become: yes

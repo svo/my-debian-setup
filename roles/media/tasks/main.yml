@@ -32,3 +32,7 @@
 - name: Install spotify downloader
   pip: name=spotdl executable=pip3
   become: yes
+
+- name: Install audible player
+  snap: name=audible-for-linux
+  become: yes
