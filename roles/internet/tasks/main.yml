@@ -6,6 +6,18 @@
   apt: pkg=chromium
   become: yes
 
+- name: Add brave apt key
+  apt_key: url=https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+  become: yes
+
+- name: Add brave apt repository
+  apt_repository: repo='deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main' filename=brave-browser update_cache=yes
+  become: yes
+
+- name: Install brave web browser
+  apt: pkg=brave-browser
+  become: yes
+
 - name: Add google apt key
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub
   become: yes
