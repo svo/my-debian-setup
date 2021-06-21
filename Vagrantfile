@@ -3,11 +3,6 @@
 
 VAGRANTFILE_API_VERSION = '2'
 
-unless Vagrant.has_plugin?('vagrant-cachier')
-  puts 'Install vagrant-cachier'
-  exec 'vagrant plugin install vagrant-cachier && vagrant up'
-end
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'bento/debian-10'
 
