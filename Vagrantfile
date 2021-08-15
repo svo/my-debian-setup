@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = 'development-box-debian'
 
-  config.vm.provision 'shell', inline: 'sudo apt-get update'
+  config.vm.provision 'shell', inline: 'sudo apt-get -y --allow-releaseinfo-change update'
   config.vm.provision 'shell', inline: 'sudo apt-get install -y python3'
 
   config.vm.provision 'ansible' do |ansible|
