@@ -150,6 +150,10 @@
   apt: pkg=xclip
   become: yes
 
+- name: Install Really Slick Screensavers
+  apt: pkg=xscreensaver,xscreensaver-gl,rss-glx
+  become: yes
+
 - name: Add pbcopy/pbpaste alias to bashrc
   lineinfile: dest=~/.bashrc line={{ item }}
   with_items:
