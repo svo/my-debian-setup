@@ -63,4 +63,3 @@
 - name: Install internet radio player
   flatpak:
     name: de.haeckerfelix.Shortwave
-  ignore_errors: yes
