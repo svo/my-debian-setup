@@ -159,3 +159,12 @@
   with_items:
   - alias pbcopy='xclip -selection clipboard'
   - alias pbpaste='xclip -selection clipboard -o'
+
+- name: Install flatpak application deployment framework for desktop apps
+  apt: pkg=flatpak
+  become: yes
+
+- name: Add the flathub remote
+  flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo

@@ -59,3 +59,8 @@
 - name: Install audible player
   snap: name=audible-for-linux
   become: yes
+
+- name: Install internet radio player
+  flatpak:
+    name: de.haeckerfelix.Shortwave
+  ignore_errors: yes
