@@ -63,3 +63,10 @@
 - name: Install internet radio player
   flatpak:
     name: de.haeckerfelix.Shortwave
+
+- name: Download OpenAudible .deb
+  get_url: url=https://openaudible.org/latest/OpenAudible_x86_64.deb dest=~/Installs/OpenAudible_x86_64.deb
+
+- name: Install OpenAudible
+  apt: deb=/tmp/Installs/OpenAudible_x86_64.deb
+  become: yes
