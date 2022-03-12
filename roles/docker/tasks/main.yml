@@ -1,7 +1,3 @@
-- name: Install required packages
-  apt: name=apt-transport-https,ca-certificates,curl update_cache=yes
-  become: yes
-
 - name: Add docker apt key
   apt_key: url=https://download.docker.com/linux/debian/gpg
   become: yes

@@ -1,5 +1,5 @@
-- name: Install OpenVPN
-  apt: pkg=openvpn
+- name: Install lynx command line browser
+  apt: pkg=lynx
   become: yes
 
 - name: Install chromium web browser

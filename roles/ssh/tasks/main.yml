@@ -1,0 +1,11 @@
+- name: Install SSH server
+  apt: pkg=openssh-server
+  become: yes
+
+- name: Install sshpass
+  apt: pkg=sshpass
+  become: yes
+
+- name: Disable SSHD startup
+  shell: update-rc.d ssh disable
+  become: yes

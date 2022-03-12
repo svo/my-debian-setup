@@ -1,13 +1,19 @@
+- name: Install flatpak application deployment framework for desktop apps
+  apt: pkg=flatpak
+  become: yes
+
+- name: Add the flathub remote
+  flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+  become: yes
+
 - name: Install snap daemon
   apt: pkg=snapd
   become: yes
 
 - name: Install ansible
   pip: name=ansible executable=pip3
-  become: yes
-
-- name: Install pywinrm for ansible windows provisioning
-  pip: name=pywinrm executable=pip3
   become: yes
 
 - name: Add VirtualBox repository key

@@ -13,5 +13,5 @@
   npm: name=electron-packager version=14.0.4 global=yes
   become: yes
 
-- name: Install vim plugins
+- name: Install JavaScript vim plugin
   git: repo=https://github.com/pangloss/vim-javascript.git dest=~/.vim/bundle/vim-javascript
