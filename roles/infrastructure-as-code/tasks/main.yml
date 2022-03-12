@@ -29,34 +29,25 @@
   become: yes
 
 - name: Install VirtualBox
-  apt: pkg=virtualbox-5.2
+  apt: pkg=virtualbox-6.1
   become: yes
 
-- name: Download vagrant .deb
-  get_url: url=https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.deb dest=~/Installs/vagrant_2.1.2_x86_64.deb checksum=sha256:f614a60b258a856322f23d33a24201d26ab2555d047814fec403e834eb7d62b4
-
 - name: Install vagrant
-  apt: deb=/tmp/Installs/vagrant_2.1.2_x86_64.deb
+  apt: pkg=vagrant
   become: yes
 
 - name: Download Terraform installation resource
-  get_url: url=https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip dest=~/Installs/terraform_0.11.3_linux_amd64.zip checksum=sha256:6b8a7b83954597d36bbed23913dd51bc253906c612a070a21db373eab71b277b
+  get_url: url=https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_amd64.zip dest=~/Installs/terraform_1.1.7_linux_amd64.zip checksum=sha256:e4add092a54ff6febd3325d1e0c109c9e590dc6c38f8bb7f9632e4e6bcca99d4
 
 - name: Unarchive Terraform
-  unarchive: src=~/Installs/terraform_0.11.3_linux_amd64.zip remote_src=yes dest=/tmp
+  unarchive: src=~/Installs/terraform_1.1.7_linux_amd64.zip remote_src=yes dest=/tmp
 
 - name: Install Terraform
   copy: src=/tmp/terraform dest=/usr/local/bin remote_src=yes mode=0755
   become: yes
 
-- name: Get Packer installer
-  get_url: url=https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_linux_amd64.zip dest=~/Installs/packer_1.2.0_linux_amd64.zip checksum=sha256:d1b0fcc4e66dfe4919c25752d028a4e4466921bf0e3f75be3bbf1c85082e8040
-
-- name: Unarchive Packer
-  unarchive: src=~/Installs/packer_1.2.0_linux_amd64.zip remote_src=yes dest=/tmp
-
 - name: Install packer
-  copy: src=/tmp/packer dest=/usr/local/bin remote_src=yes mode=0755
+  apt: pkg=packer
   become: yes
 
 - name: Install awscli

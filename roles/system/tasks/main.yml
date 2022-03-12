@@ -60,10 +60,6 @@
   apt: pkg=nfs-kernel-server
   become: yes
 
-- name: Install hfsprogs for HFS filesystem support
-  apt: pkg=hfsprogs
-  become: yes
-
 - name: Install ntfs-3g for NTFS filesystem support
   apt: pkg=ntfs-3g
   become: yes
@@ -87,10 +83,10 @@
     - alias pbpaste='xclip -selection clipboard -o'
 
 - name: Download topgrade installation resource
-  get_url: url=https://github.com/r-darwish/topgrade/releases/download/v8.1.2/topgrade-v8.1.2-x86_64-unknown-linux-gnu.tar.gz dest=~/Installs/topgrade-v8.1.2-x86_64-unknown-linux-gnu.tar.gz checksum=sha256:9c72929c894b6095eb5c97dd83a3e8278895ea3f6a431c22c90e1733613a4f3a
+  get_url: url=https://github.com/r-darwish/topgrade/releases/download/v8.2.0/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz dest=~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz checksum=sha256:5d2588260673d93355744a974f85cff8cb9eceb60fff45e26f625130f051151c
 
 - name: Unarchive topgrade
-  unarchive: src=~/Installs/topgrade-v8.1.2-x86_64-unknown-linux-gnu.tar.gz remote_src=yes dest=/tmp
+  unarchive: src=~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz remote_src=yes dest=/tmp
 
 - name: Install topgrade
   copy: src=/tmp/topgrade dest=/usr/local/bin remote_src=yes mode=0755

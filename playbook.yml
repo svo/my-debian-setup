@@ -30,6 +30,7 @@
     - nvidia
     - docker
     - docker-compose
+    - office
 
   post_tasks:
 

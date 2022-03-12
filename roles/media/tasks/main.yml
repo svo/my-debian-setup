@@ -45,13 +45,6 @@
   apt: pkg=handbrake
   become: yes
 
-- name: Download Auryo .deb
-  get_url: url=https://github.com/Superjo149/auryo/releases/download/v1.4.3/Auryo_1.4.3_amd64.deb dest=~/Installs/Auryo_1.4.3_amd64.deb
-
-- name: Install Auryo
-  apt: deb=/tmp/Installs/Auryo_1.4.3_amd64.deb
-  become: yes
-
 - name: Install spotify downloader
   pip: name=spotdl executable=pip3
   become: yes
@@ -59,10 +52,6 @@
 - name: Install audible player
   snap: name=audible-for-linux
   become: yes
-
-- name: Install internet radio player
-  flatpak:
-    name: de.haeckerfelix.Shortwave
 
 - name: Download OpenAudible .deb
   get_url: url=https://openaudible.org/latest/OpenAudible_x86_64.deb dest=~/Installs/OpenAudible_x86_64.deb

@@ -92,25 +92,10 @@
   apt: pkg=fdupes
   become: yes
 
-- name: Install fslint for finding duplicate files on filesystem
-  apt: pkg=fslint
-  become: yes
-
 - name: Install bc command line calculator
   apt: pkg=bc
   become: yes
 
 - name: Install xclip clipboard utility
   apt: pkg=xclip
-  become: yes
-- name: Install fdupes for finding duplicate files on filesystem
-  apt: pkg=fdupes
-  become: yes
-
-- name: Install fslint for finding duplicate files on filesystem
-  apt: pkg=fslint
-  become: yes
-
-- name: Install bc command line calculator
-  apt: pkg=bc
   become: yes

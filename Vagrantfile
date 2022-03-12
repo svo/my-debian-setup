@@ -4,7 +4,7 @@
 VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = 'bento/debian-10'
+  config.vm.box = 'bento/debian-11'
 
   config.vm.hostname = 'development-box-debian'
 
