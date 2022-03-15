@@ -1,3 +1,10 @@
 - name: Install miro
   snap: name=miro channel=edge
   become: yes
+
+- name: Download 1Password .deb
+  get_url: url=https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb dest=~/Installs/1password-latest.deb checksum=sha256:f370137bccd7d8387524da139f3d5becb5ec01f3aee1d7b1cc849805008adee4
+
+- name: Install 1Password
+  apt: deb=/tmp/Installs/1password-latest.deb
+  become: yes
