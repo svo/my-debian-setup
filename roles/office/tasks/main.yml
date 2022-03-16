@@ -8,3 +8,7 @@
 - name: Install 1Password
   apt: deb=/tmp/Installs/1password-latest.deb
   become: yes
+
+- name: Install Gpick color picker
+  apt: pkg=gpick
+  become: yes
