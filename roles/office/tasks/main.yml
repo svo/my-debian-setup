@@ -12,3 +12,6 @@
 - name: Install Gpick color picker
   apt: pkg=gpick
   become: yes
+
+- name: Download boost note .deb
+  get_url: url=https://github.com/BoostIO/BoostNote-App/releases/download/v0.23.1/boost-note-linux.AppImage dest=~/Installs/boost-note-linux.AppImage checksum=sha256:ce588518472192b393173362acd3e7f0eb06c466b3aeeca6087d8e629173c3ff mode=u+x
