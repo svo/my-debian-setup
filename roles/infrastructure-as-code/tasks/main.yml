@@ -32,6 +32,13 @@
   apt: pkg=virtualbox-6.1
   become: yes
 
+- name: Configure VirtualBox network access
+  lineinfile:
+    path: /etc/vbox/networks.conf
+    line: "* 0.0.0.0/0 ::/0"
+    create: yes
+  become: yes
+
 - name: Install vagrant
   apt: pkg=vagrant
   become: yes
