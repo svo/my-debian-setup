@@ -1,3 +1,15 @@
+- name: Add jellyfin apt key
+  apt_key: url=https://repo.jellyfin.org/jellyfin_team.gpg.key
+  become: yes
+
+- name: Install jellyfin apt repository
+  apt_repository: repo='deb [arch=amd64] https://repo.jellyfin.org/debian {{ ansible_distribution_release }} main' state=present
+  become: yes
+
+- name: Install jellyfin
+  apt: name=jellyfin update_cache=yes
+  become: yes
+
 - name: Install VLC media player
   apt: pkg=vlc
   become: yes
