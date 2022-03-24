@@ -1,5 +1,7 @@
 # My Debian Setup
 
+[![Continuous integration](https://github.com/svo/my-debian-setup/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/svo/my-debian-setup/actions/workflows/main.yml)
+
 ## Testing
 
 If no Virtual Machine already in place:
@@ -19,7 +21,7 @@ vagrant provision
 ### Including Bootstrapping
 
 ```
-./build.sh
+./prepare.sh && ./build.sh
 ```
 
 Above sets up `python`, `pip` and `ansible` before running the `playbook.yml`.
@@ -27,5 +29,5 @@ Above sets up `python`, `pip` and `ansible` before running the `playbook.yml`.
 ### Ansible Only
 
 ```
-ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "localhost," -c local -K playbook.yml
+./build.sh
 ```
