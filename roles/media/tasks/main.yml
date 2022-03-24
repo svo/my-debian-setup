@@ -3,7 +3,7 @@
   become: yes
 
 - name: Install jellyfin apt repository
-  apt_repository: repo='deb [arch=amd64] https://repo.jellyfin.org/debian {{ ansible_distribution_release }} main' state=present
+  apt_repository: repo='deb [arch=amd64] https://repo.jellyfin.org/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main' state=present
   become: yes
 
 - name: Install jellyfin
@@ -28,29 +28,6 @@
 
 - name: Install GIMP photo editor
   apt: pkg=gimp
-  become: yes
-
-- name: Add non-free repository
-  lineinfile:
-    dest: /etc/apt/sources.list
-    regexp: '^deb http.* {{ ansible_distribution_release }} main'
-    line: 'deb http://ftp.iinet.net.au/debian/debian/ {{ ansible_distribution_release }} main contrib non-free'
-  become: yes
-
-- name: Install libdvdcss for accessing DVDs like a block device without having to bother about the decryption
-  apt: pkg=libdvd-pkg update_cache=yes
-  become: yes
-
-- name: dpkg-reconfigure -f noninteractive libdvd-pkg
-  command:
-    cmd: dpkg-reconfigure -f noninteractive libdvd-pkg
-    creates: /etc/apt/apt.conf.d/88libdvdcss-pkg
-
-- name: Disable non-free repository
-  lineinfile:
-    dest: /etc/apt/sources.list
-    regexp: '^deb http.* {{ ansible_distribution_release }} main*'
-    line: 'deb http://ftp.iinet.net.au/debian/debian/ {{ ansible_distribution_release }} main'
   become: yes
 
 - name: Install handbrake video converter

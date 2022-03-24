@@ -1,0 +1,20 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Provision
+        run: |
+          ./build.sh
+        env:
+          ANSIBLE_FORCE_COLOR: '1'

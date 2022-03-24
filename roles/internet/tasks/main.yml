@@ -2,10 +2,6 @@
   apt: pkg=lynx
   become: yes
 
-- name: Install chromium web browser
-  apt: pkg=chromium
-  become: yes
-
 - name: Add brave apt key
   apt_key: url=https://brave-browser-apt-release.s3.brave.com/brave-core.asc
   become: yes

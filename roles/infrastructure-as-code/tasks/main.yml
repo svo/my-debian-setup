@@ -13,7 +13,7 @@
   become: yes
 
 - name: Install ansible
-  pip: name=ansible executable=pip3
+  apt: pkg=ansible
   become: yes
 
 - name: Add VirtualBox repository key
@@ -25,7 +25,7 @@
   become: yes
 
 - name: Install Dynamic Kernel Module Support
-  apt: pkg=linux-headers-amd64,dkms
+  apt: pkg=dkms
   become: yes
 
 - name: Install VirtualBox

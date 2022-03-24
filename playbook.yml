@@ -27,10 +27,11 @@
     - nodejs
     - ruby
     - internet
-    - nvidia
     - docker
     - docker-compose
     - office
+    - golang
+    - act
 
   post_tasks:
 
