@@ -40,7 +40,6 @@
 
 - name: Install audible player
   snap: name=audible-for-linux
-  ignore_errors: yes
   become: yes
 
 - name: Download OpenAudible .deb

@@ -1,6 +1,5 @@
 - name: Install miro
   snap: name=miro channel=edge
-  ignore_errors: yes
   become: yes
 
 - name: Download 1Password .deb
