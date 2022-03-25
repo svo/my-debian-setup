@@ -8,15 +8,32 @@ on:
 
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-debian:
+    container: debian:11-slim
     steps:
       - uses: actions/checkout@v2
 
       - name: Provision
         run: |
+          apt-get update &&
+          apt-get install sudo &&
           ./prepare.sh &&
           ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "localhost," -c local playbook.yml &&
-          sudo apt -y autoremove
+          apt -y autoremove
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+  build-ubuntu:
+    container: ubuntu:20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Provision
+        run: |
+          apt-get update &&
+          apt-get install sudo &&
+          ./prepare.sh &&
+          ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "localhost," -c local playbook.yml &&
+          apt -y autoremove
         env:
           ANSIBLE_FORCE_COLOR: '1'
