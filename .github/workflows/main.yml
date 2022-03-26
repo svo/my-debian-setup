@@ -6,9 +6,9 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
-
 jobs:
   build-debian:
+    runs-on: ubuntu-latest
     container: debian:11-slim
     steps:
       - uses: actions/checkout@v2
@@ -24,6 +24,7 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
 
   build-ubuntu:
+    runs-on: ubuntu-latest
     container: ubuntu:20.04
     steps:
       - uses: actions/checkout@v2
