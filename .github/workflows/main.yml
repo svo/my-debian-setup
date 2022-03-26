@@ -9,7 +9,9 @@ on:
 jobs:
   build-debian:
     runs-on: ubuntu-latest
-    container: debian:11-slim
+    container:
+      image: debian:11-slim
+      options: --user github
     steps:
       - uses: actions/checkout@v2
 
@@ -17,6 +19,10 @@ jobs:
         run: |
           apt-get update &&
           apt-get install sudo &&
+          useradd -s /bin/bash github &&
+          echo github:github | chpasswd -m &&
+          echo root:github | chpasswd -m &&
+          echo 'github ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/github &&
           ./prepare.sh &&
           ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "localhost," -c local playbook.yml &&
           apt -y autoremove
@@ -25,7 +31,9 @@ jobs:
 
   build-ubuntu:
     runs-on: ubuntu-latest
-    container: ubuntu:20.04
+    container:
+      image: ubuntu:20.04
+      options: --user github
     steps:
       - uses: actions/checkout@v2
 
@@ -33,6 +41,10 @@ jobs:
         run: |
           apt-get update &&
           apt-get install sudo &&
+          useradd -s /bin/bash github &&
+          echo github:github | chpasswd -m &&
+          echo root:github | chpasswd -m &&
+          echo 'github ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/github &&
           ./prepare.sh &&
           ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "localhost," -c local playbook.yml &&
           apt -y autoremove
