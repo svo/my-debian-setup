@@ -7,40 +7,42 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  build-debian:
+  setup-debian:
     runs-on: ubuntu-latest
-    container:
-      image: debian:11-slim
-      options: --name debian
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Provision
-        run: |
-          apt-get update &&
-          apt-get install sudo &&
-          ./prepare.sh &&
-          ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" --connection docker -i "debian," -c local playbook.yml &&
-          apt -y autoremove
+        uses: addnab/docker-run-action@v3
+        with:
+          image: debian:11-slim
+          options: -v ${{ github.workspace }}:/work -w /work -e ANSIBLE_FORCE_COLOR=1
+          shell: bash
+          run: |
+            apt-get update &&
+            apt-get install sudo &&
+            ./prepare.sh &&
+            ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "debian," -c local playbook.yml &&
+            apt -y autoremove
         env:
           ANSIBLE_FORCE_COLOR: '1'
 
-  build-ubuntu:
+  setup-ubuntu:
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:20.04
-      options: --name ubuntu
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Provision
-        run: |
-          apt-get update &&
-          apt-get install sudo &&
-          ./prepare.sh &&
-          ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "ubuntu," -c local playbook.yml &&
-          apt -y autoremove
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ubuntu:20.04
+          options: -v ${{ github.workspace }}:/work -w /work -e ANSIBLE_FORCE_COLOR=1
+          shell: bash
+          run: |
+            apt-get update &&
+            apt-get install sudo &&
+            ./prepare.sh &&
+            ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "ubuntu," -c local playbook.yml &&
+            apt -y autoremove
