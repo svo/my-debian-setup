@@ -38,11 +38,6 @@
   pip: name=spotdl executable=pip3
   become: yes
 
-- name: Install audible player
-  snap: name=audible-for-linux
-  ignore_errors: yes
-  become: yes
-
 - name: Download OpenAudible .deb
   get_url: url=https://openaudible.org/latest/OpenAudible_x86_64.deb dest=~/Installs/OpenAudible_x86_64.deb
 
