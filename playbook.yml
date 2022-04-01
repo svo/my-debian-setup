@@ -32,6 +32,7 @@
     - office
     - golang
     - act
+    - nginx
 
   post_tasks:
 

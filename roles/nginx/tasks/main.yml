@@ -1,0 +1,13 @@
+- name: Install nginx
+  apt: pkg=nginx
+  become: yes
+
+- name: Install SSL certificate tooling
+  apt: pkg=certbot,python3-certbot-nginx
+  become: yes
+
+- name: Create renew SSL certificate schedule
+  cron:
+    name: renew SSL certificate
+    special_time: daily
+    job: /usr/bin/certbot renew --quiet
