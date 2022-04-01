@@ -38,3 +38,12 @@ If Virtual Machine already created:
 ```
 vagrant provision
 ```
+
+## SSL Certificate
+
+After provisioning you may want to generate the `SSL` certificate for `nginx` using:
+
+```
+domain="svo.is"
+sudo certbot --nginx -d $domain
+```
