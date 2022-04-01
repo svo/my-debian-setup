@@ -1,9 +1,16 @@
 - name: Install nginx
   apt: pkg=nginx
   become: yes
+- name: Install nginx
+  apt: pkg=nginx
+  become: yes
 
 - name: Install SSL certificate tooling
   apt: pkg=certbot,python3-certbot-nginx
+  become: yes
+
+- name: Install crontab
+  apt: pkg=crontab
   become: yes
 
 - name: Create renew SSL certificate schedule
