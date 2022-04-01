@@ -10,7 +10,7 @@
   become: yes
 
 - name: Install crontab
-  apt: pkg=crontab
+  apt: pkg=cron
   become: yes
 
 - name: Create renew SSL certificate schedule
