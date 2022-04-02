@@ -1,3 +1,7 @@
+- name: Install firewall
+  apt: pkg=ufw
+  become: yes
+
 - name: Install network bridge utils
   apt: pkg=bridge-utils
   become: yes
