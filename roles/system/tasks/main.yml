@@ -81,3 +81,7 @@
 - name: Install topgrade
   copy: src=/tmp/topgrade dest=/usr/local/bin remote_src=yes mode=0755
   become: yes
+
+- name: Install Cryptmount for encrypted filesystems
+  apt: pkg=cryptmount
+  become: yes
