@@ -24,10 +24,6 @@
   apt_repository: repo='deb https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib non-free' update_cache=yes
   become: yes
 
-- name: Install Dynamic Kernel Module Support
-  apt: pkg=dkms
-  become: yes
-
 - name: Install VirtualBox
   apt: pkg=virtualbox-6.1
   become: yes
