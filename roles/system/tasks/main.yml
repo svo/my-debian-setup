@@ -85,3 +85,7 @@
 - name: Install Cryptmount for encrypted filesystems
   apt: pkg=cryptmount
   become: yes
+
+- name: Install bluetooth support
+  apt: pkg=bluez,blueman
+  become: yes
