@@ -39,8 +39,12 @@
   become: yes
 
 - name: Download OpenAudible .deb
-  get_url: url=https://openaudible.org/latest/OpenAudible_x86_64.deb dest=~/Installs/OpenAudible_x86_64.deb
+  get_url: url=https://github.com/openaudible/openaudible/releases/download/v3.5.3/OpenAudible_3.5.3_x86_64.deb dest=~/Installs/OpenAudible_x86_64.deb
 
 - name: Install OpenAudible
   apt: deb=/tmp/Installs/OpenAudible_x86_64.deb
+  become: yes
+
+- name: Install Cheese for webcam support
+  apt: pkg=cheese
   become: yes
