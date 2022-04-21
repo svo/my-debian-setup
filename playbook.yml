@@ -33,6 +33,7 @@
     - golang
     - act
     - nginx
+    - steam
 
   post_tasks:
 
