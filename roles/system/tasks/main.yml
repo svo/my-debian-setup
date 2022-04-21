@@ -89,3 +89,7 @@
 - name: Install bluetooth support
   apt: pkg=bluez,blueman
   become: yes
+
+- name: Install world clock
+  apt: pkg=gnome-clocks
+  become: yes
