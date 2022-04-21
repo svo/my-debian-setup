@@ -2,7 +2,7 @@
   lineinfile:
     dest: /etc/apt/sources.list
     regexp: '^deb http.* {{ ansible_distribution_release }} main'
-    line: 'deb http://deb.debian.org/debian/ {{ ansible_distribution_release }} main contrib non-free'
+    line: 'deb https://mirror.aarnet.edu.au/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main contrib non-free'
   become: yes
 
 - name: Enabling 32-bit support
@@ -25,5 +25,5 @@
   lineinfile:
     dest: /etc/apt/sources.list
     regexp: '^deb http.* {{ ansible_distribution_release }} main*'
-    line: 'deb http://deb.debian.org/debian/ {{ ansible_distribution_release }} main'
+    line: 'deb https://mirror.aarnet.edu.au/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main'
   become: yes
