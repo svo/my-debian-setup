@@ -48,3 +48,7 @@
 - name: Install Cheese for webcam support
   apt: pkg=cheese
   become: yes
+
+- name: Install mkv video tools
+  apt: pkg=mkvtoolnix,mkvtoolnix-gui
+  become: yes
