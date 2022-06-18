@@ -34,7 +34,7 @@
   become: yes
 
 - name: Install Deluge BitTorrent client
-  apt: pkg=deluge,deluged,deluge-console
+  apt: pkg=deluge,deluged,deluge-console,deluge-web
   become: yes
 
 - name: Install uGet download manager
