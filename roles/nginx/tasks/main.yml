@@ -9,9 +9,3 @@
 - name: Install crontab
   apt: pkg=cron
   become: yes
-
-- name: Create renew SSL certificate schedule
-  cron:
-    name: renew SSL certificate
-    special_time: daily
-    job: /usr/bin/certbot renew --quiet
