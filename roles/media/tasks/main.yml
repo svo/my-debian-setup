@@ -49,6 +49,10 @@
   apt: pkg=cheese
   become: yes
 
+- name: Install capture program for webcam
+  apt: pkg=motion
+  become: yes
+
 - name: Install mkv video tools
   apt: pkg=mkvtoolnix,mkvtoolnix-gui
   become: yes
