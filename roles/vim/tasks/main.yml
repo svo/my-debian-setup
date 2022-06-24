@@ -40,19 +40,22 @@
     - {repo: "https://github.com/udalov/kotlin-vim.git", dest: kotlin-vim}
 
 - name: Update .vimrc
-  lineinfile: dest=~/.vimrc line={{ item }} create=yes
-  with_items:
-    - execute pathogen#infect()
-    - syntax on
-    - filetype plugin indent on
-    - :set tabstop=2
-    - :set shiftwidth=2
-    - :set expandtab
-    - :set nobackup
-    - :set noswapfile
-    - let g:vim_markdown_folding_style_pythonic = 1
-    - map <C-n> :NERDTreeToggle<CR>
-    - autocmd BufEnter * EnableStripWhitespaceOnSave
+  blockinfile:
+    create: yes
+    marker: '"# {mark} ANSIBLE MANAGED BLOCK"'
+    path: ~/.vimrc
+    block: |
+      execute pathogen#infect()
+      syntax on
+      filetype plugin indent on
+      :set tabstop=2
+      :set shiftwidth=2
+      :set expandtab
+      :set nobackup
+      :set noswapfile
+      let g:vim_markdown_folding_style_pythonic = 1
+      map <C-n> :NERDTreeToggle<CR>
+      autocmd BufEnter * EnableStripWhitespaceOnSave
 
 - name: Set vim as git editor
   git_config: name=core.editor scope=global value=vim
