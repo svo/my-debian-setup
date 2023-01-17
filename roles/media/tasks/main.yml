@@ -10,6 +10,10 @@
   apt: name=jellyfin update_cache=yes
   become: yes
 
+- name: Install commandline metadata tool
+  apt: pkg=libimage-exiftool-perl
+  become: yes
+
 - name: Install VLC media player
   apt: pkg=vlc
   become: yes
