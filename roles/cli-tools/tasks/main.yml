@@ -99,3 +99,7 @@
 - name: Install xclip clipboard utility
   apt: pkg=xclip
   become: yes
+
+- name: Install jq json processor
+  apt: pkg=jq
+  become: yes
