@@ -58,6 +58,10 @@
   apt: pkg=gddrescue
   become: yes
 
+- name: Install testdisk
+  apt: pkg=testdisk
+  become: yes
+
 - name: Install foremost to recover lost files
   apt: pkg=foremost
   become: yes
