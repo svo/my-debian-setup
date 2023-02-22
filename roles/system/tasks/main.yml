@@ -62,6 +62,10 @@
   apt: pkg=testdisk
   become: yes
 
+- name: Install safecopy
+  apt: pkg=safecopy
+  become: yes
+
 - name: Install foremost to recover lost files
   apt: pkg=foremost
   become: yes
