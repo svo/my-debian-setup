@@ -44,6 +44,6 @@ vagrant provision
 After provisioning you may want to generate the `SSL` certificate for `nginx` using:
 
 ```
-domain="svo.is"
+domain="qual.is"
 sudo certbot --nginx -d $domain
 ```
