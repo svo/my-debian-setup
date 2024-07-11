@@ -17,7 +17,7 @@ jobs:
       - name: Provision
         uses: addnab/docker-run-action@v3
         with:
-          image: debian:11-slim
+          image: debian:12-slim
           options: -v ${{ github.workspace }}:/work -w /work -e ANSIBLE_FORCE_COLOR=1
           shell: bash
           run: |
@@ -38,7 +38,7 @@ jobs:
       - name: Provision
         uses: addnab/docker-run-action@v3
         with:
-          image: ubuntu:20.04
+          image: ubuntu:24.04
           options: -v ${{ github.workspace }}:/work -w /work -e ANSIBLE_FORCE_COLOR=1
           shell: bash
           run: |
