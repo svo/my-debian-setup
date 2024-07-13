@@ -28,7 +28,6 @@
     - ruby
     - internet
     - docker
-    - docker-compose
     - office
     - golang
     - act
