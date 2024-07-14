@@ -22,7 +22,7 @@ jobs:
           shell: bash
           run: |
             apt-get update &&
-            apt-get install sudo &&
+            apt-get install -y sudo &&
             ./prepare.sh &&
             ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "debian," -c local playbook.yml &&
             apt -y autoremove
@@ -43,7 +43,10 @@ jobs:
           shell: bash
           run: |
             apt-get update &&
-            apt-get install sudo &&
+            apt-get install -y sudo &&
+            export DEBIAN_FRONTEND=noninteractive &&
+            export TZ=Etc/UTC &&
+            apt-get install -y tzdata &&
             ./prepare.sh &&
             ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "ubuntu," -c local playbook.yml &&
             apt -y autoremove
