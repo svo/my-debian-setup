@@ -77,7 +77,7 @@
   become: yes
 
 - name: Install locate
-  apt: pkg=mlocate
+  apt: pkg=plocate
   become: yes
 
 - name: Install icdiff side by side diff tool
