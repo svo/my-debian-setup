@@ -1,5 +1,5 @@
 - name: Download 1Password .deb
-  get_url: url=https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb dest=~/Installs/1password-latest.deb checksum=sha256:28babf379e777e977c3ccb2e201d396fc2209495e88fe15d4fa8710c1557c4c5
+  get_url: url=https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb dest=~/Installs/1password-latest.deb checksum=sha256:ade91ff41e81239b3be15922c3b10a1d0fb21ace584100f6bfe0f7f20c44f576
 
 - name: Install 1Password
   apt: deb=/tmp/Installs/1password-latest.deb

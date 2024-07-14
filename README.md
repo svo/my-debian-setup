@@ -6,8 +6,8 @@
 
 | Operating System | Version |
 |--|--|
-| Debian | 11 (bullseye) |
-| Ubuntu | 12.04 (Focal Fossa) |
+| Debian | 12 |
+| Ubuntu | 24.04 |
 
 ## Setup Machine
 

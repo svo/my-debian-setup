@@ -16,25 +16,6 @@
   apt: pkg=ansible
   become: yes
 
-- name: Add VirtualBox repository key
-  apt_key: url=https://www.virtualbox.org/download/oracle_vbox_2016.asc
-  become: yes
-
-- name: Add VirtualBox repository
-  apt_repository: repo='deb https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib non-free' update_cache=yes
-  become: yes
-
-- name: Install VirtualBox
-  apt: pkg=virtualbox-6.1
-  become: yes
-
-- name: Configure VirtualBox network access
-  lineinfile:
-    path: /etc/vbox/networks.conf
-    line: "* 0.0.0.0/0 ::/0"
-    create: yes
-  become: yes
-
 - name: Install vagrant
   apt: pkg=vagrant
   become: yes
@@ -54,7 +35,7 @@
   become: yes
 
 - name: Install awscli
-  pip: name=awscli executable=pip3
+  apt: pkg=awscli
   become: yes
 
 - name: Install vim plugins

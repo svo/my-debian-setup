@@ -19,7 +19,7 @@
   become: yes
 
 - name: Add spotify apt key
-  apt_key: url=https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg
+  apt_key: url=https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg
   become: yes
 
 - name: Add spotify repository
@@ -36,10 +36,6 @@
 
 - name: Install handbrake video converter
   apt: pkg=handbrake
-  become: yes
-
-- name: Install spotify downloader
-  pip: name=spotdl executable=pip3
   become: yes
 
 - name: Download OpenAudible .deb
