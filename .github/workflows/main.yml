@@ -38,7 +38,7 @@ jobs:
       - name: Provision
         uses: addnab/docker-run-action@v3
         with:
-          image: ubuntu:24.04
+          image: ubuntu:22.04
           options: -v ${{ github.workspace }}:/work -w /work -e ANSIBLE_FORCE_COLOR=1
           shell: bash
           run: |
