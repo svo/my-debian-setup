@@ -8,7 +8,28 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  setup-debian:
+  setup-debian-11:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Provision
+        uses: addnab/docker-run-action@v3
+        with:
+          image: debian:11-slim
+          options: -v ${{ github.workspace }}:/work -w /work -e ANSIBLE_FORCE_COLOR=1
+          shell: bash
+          run: |
+            apt-get update &&
+            apt-get install -y sudo &&
+            ./prepare.sh &&
+            ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "debian-11," -c local playbook.yml &&
+            apt -y autoremove
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+  setup-debian-12:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +45,7 @@ jobs:
             apt-get update &&
             apt-get install -y sudo &&
             ./prepare.sh &&
-            ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "debian," -c local playbook.yml &&
+            ansible-playbook -e "ansible_python_interpreter:'/usr/bin/python3'" -i "debian-12," -c local playbook.yml &&
             apt -y autoremove
         env:
           ANSIBLE_FORCE_COLOR: '1'
