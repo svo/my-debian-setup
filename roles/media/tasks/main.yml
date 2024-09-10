@@ -28,6 +28,7 @@
 
 - name: Install spotify client
   apt: pkg=spotify-client update_cache=yes
+  ignore_errors: yes
   become: yes
 
 - name: Install GIMP photo editor
