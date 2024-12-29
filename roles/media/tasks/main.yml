@@ -19,7 +19,7 @@
   become: yes
 
 - name: Add spotify apt key
-  apt_key: url=https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg
+  apt_key: url=https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg
   become: yes
 
 - name: Add spotify repository
