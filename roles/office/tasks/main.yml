@@ -1,10 +1,3 @@
-- name: Download 1Password .deb
-  get_url: url=https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb dest=~/Installs/1password-latest.deb checksum=sha256:bbbddfdad7125aa1d90eacca7e69d1b924963ae3d1b4a823089b122492647225
-
-- name: Install 1Password
-  apt: deb=/tmp/Installs/1password-latest.deb
-  become: yes
-
 - name: Install Gpick color picker
   apt: pkg=gpick
   become: yes
