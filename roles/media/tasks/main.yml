@@ -1,5 +1,7 @@
 - name: Add jellyfin apt key
-  apt_key: url=https://repo.jellyfin.org/jellyfin_team.gpg.key
+  apt_key:
+    url: https://repo.jellyfin.org/jellyfin_team.gpg.key
+    keyring: /etc/apt/trusted.gpg.d/jellyfin.gpg
   become: yes
 
 - name: Install jellyfin apt repository
