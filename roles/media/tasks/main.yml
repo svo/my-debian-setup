@@ -5,7 +5,7 @@
   become: yes
 
 - name: Install jellyfin apt repository
-  apt_repository: repo='deb [arch=amd64] https://repo.jellyfin.org/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main' state=present
+  apt_repository: repo='deb https://repo.jellyfin.org/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main' state=present
   become: yes
 
 - name: Install jellyfin
