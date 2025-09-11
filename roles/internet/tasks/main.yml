@@ -26,6 +26,7 @@
 
 - name: Install chrome web browser
   apt: pkg=google-chrome-stable
+  ignore_errors: yes
   become: yes
 
 - name: Download ferdium .deb
