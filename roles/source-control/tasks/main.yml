@@ -1,3 +1,7 @@
+- name: Install bash completion
+  apt: pkg=bash-completion
+  become: yes
+
 - name: Install git
   apt: pkg=git-core
   become: yes
@@ -8,10 +12,17 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
     create: yes
     block: |
-      export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
-      export GIT_PS1_DESCRIBE_STYLE=branch
-      export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" " \\\$ "'
-      export GIT_PS1_SHOWCOLORHINTS=1
+      if [ -f /usr/share/bash-completion/completions/git ]; then
+          source /usr/share/bash-completion/completions/git
+      fi
+
+      if [ -f /usr/lib/git-core/git-sh-prompt ]; then
+          source /usr/lib/git-core/git-sh-prompt
+          export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
+          export GIT_PS1_DESCRIBE_STYLE=branch
+          export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" " \\\$ "'
+          export GIT_PS1_SHOWCOLORHINTS=1
+      fi
 
 - name: Setup git colors
   blockinfile:
