@@ -4,7 +4,7 @@
 
 - name: get golang
   unarchive:
-    src: https://golang.org/dl/go1.16.3.linux-amd64.tar.gz
+    src: "https://golang.org/dl/go1.16.3.linux-{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.tar.gz"
     dest: /usr/local
     creates: /usr/local/go
     owner: root
