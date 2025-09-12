@@ -1,9 +1,14 @@
 - name: Install vim
-  ansible.builtin.apt: pkg=vim,vim-nox,vim-addon-manager
+  ansible.builtin.apt:
+    name:
+      - vim
+      - vim-nox
+      - vim-addon-manager
   become: yes
 
 - name: Install vim plugin packages
-  ansible.builtin.apt: pkg=vim-{{ item }}
+  ansible.builtin.apt:
+    name: vim-{{ item }}
   with_items: "{{ vim_plugin_package }}"
   become: yes
 
@@ -12,7 +17,9 @@
   with_items: "{{ vim_plugin_package }}"
 
 - name: Setup paths for vim
-  ansible.builtin.file: path={{ item }} state=directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
   with_items:
     - ~/.vim/autoload
     - ~/.vim/bundle
@@ -26,7 +33,9 @@
       setlocal  shiftwidth=4
 
 - name: Install vim plugin
-  ansible.builtin.git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: ~/.vim/bundle/{{ item.dest }}
   with_items:
     - {repo: "https://github.com/scrooloose/nerdtree.git", dest: nerdtree}
     - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", dest: nerdtree-git-plugin}
@@ -58,4 +67,7 @@
       autocmd BufEnter * EnableStripWhitespaceOnSave
 
 - name: Set vim as git editor
-  community.general.git_config: name=core.editor scope=global value=vim
+  community.general.git_config:
+    name: core.editor
+    scope: global
+    value: vim

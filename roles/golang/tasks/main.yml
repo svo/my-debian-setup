@@ -1,5 +1,8 @@
 - name: Install requirements
-  ansible.builtin.apt: pkg=curl,ca-certificates
+  ansible.builtin.apt:
+    name:
+      - curl
+      - ca-certificates
   become: yes
 
 - name: get golang

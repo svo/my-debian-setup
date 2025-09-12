@@ -1,9 +1,11 @@
 - name: Install SSH server
-  ansible.builtin.apt: pkg=openssh-server
+  ansible.builtin.apt:
+    pkg: openssh-server
   become: yes
 
 - name: Install sshpass
-  ansible.builtin.apt: pkg=sshpass
+  ansible.builtin.apt:
+    pkg: sshpass
   become: yes
 
 - name: Disable SSHD startup

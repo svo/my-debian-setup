@@ -1,105 +1,134 @@
 - name: Install htop for process monitoring
-  ansible.builtin.apt: pkg=htop
+  ansible.builtin.apt:
+    name: htop
   become: yes
 
 - name: Install smem for memory monitoring
-  ansible.builtin.apt: pkg=smem
+  ansible.builtin.apt:
+    name: smem
   become: yes
 
 - name: Install iftop for network monitoring
-  ansible.builtin.apt: pkg=iftop
+  ansible.builtin.apt:
+    name: iftop
   become: yes
 
 - name: Install iotop for disk I/O monitoring
-  ansible.builtin.apt: pkg=iotop
+  ansible.builtin.apt:
+    name: iotop
   become: yes
 
 - name: Install Wireshark
-  ansible.builtin.apt: pkg=wireshark
+  ansible.builtin.apt:
+    name: wireshark
   become: yes
 
 - name: Install TaskWarrior To-Do
-  ansible.builtin.apt: pkg=taskwarrior
+  ansible.builtin.apt:
+    name: taskwarrior
   become: yes
 
 - name: Install TaskWarrior terminal interface
-  ansible.builtin.apt: pkg=vit
+  ansible.builtin.apt:
+    name: vit
   become: yes
 
 - name: Install PlantUML diagramming tool
-  ansible.builtin.apt: pkg=plantuml
+  ansible.builtin.apt:
+    name: plantuml
   become: yes
 
 - name: Install cloc for counting lines of code
-  ansible.builtin.apt: pkg=cloc
+  ansible.builtin.apt:
+    name: cloc
   become: yes
 
 - name: Install terminator terminal emulator
-  ansible.builtin.apt: pkg=terminator
+  ansible.builtin.apt:
+    name: terminator
   become: yes
 
 - name: Create terminator configuration directory
-  ansible.builtin.file: path=~/.config/terminator state=directory
+  ansible.builtin.file:
+    path: ~/.config/terminator
+    state: directory
 
 - name: Copy terminator configuration
-  ansible.builtin.copy: src=terminator.config dest=~/.config/terminator/config
+  ansible.builtin.copy:
+    src: terminator.config
+    dest: ~/.config/terminator/config
 
 - name: Install tmux terminal multiplexer
-  ansible.builtin.apt: pkg=tmux
+  ansible.builtin.apt:
+    name: tmux
   become: yes
 
 - name: Install lshw for listing hardware details
-  ansible.builtin.apt: pkg=lshw
+  ansible.builtin.apt:
+    name: lshw
   become: yes
 
 - name: Install Midnight Commander file manager
-  ansible.builtin.apt: pkg=mc
+  ansible.builtin.apt:
+    name: mc
   become: yes
 
 - name: Install curl
-  ansible.builtin.apt: pkg=curl
+  ansible.builtin.apt:
+    name: curl
   become: yes
 
 - name: Install whois
-  ansible.builtin.apt: pkg=whois
+  ansible.builtin.apt:
+    name: whois
   become: yes
 
 - name: Install HTTPie cURL wrapper
-  ansible.builtin.apt: pkg=httpie
+  ansible.builtin.apt:
+    name: httpie
   become: yes
 
 - name: Install NCurses disk Usage utility
-  ansible.builtin.apt: pkg=ncdu
+  ansible.builtin.apt:
+    name: ncdu
   become: yes
 
 - name: Install wondershaper for limiting adapter bandwidth
-  ansible.builtin.apt: pkg=wondershaper
+  ansible.builtin.apt:
+    name: wondershaper
   become: yes
 
 - name: Install locate
-  ansible.builtin.apt: pkg=plocate
+  ansible.builtin.apt:
+    name: plocate
   become: yes
 
 - name: Install icdiff side by side diff tool
-  ansible.builtin.apt: pkg=icdiff
+  ansible.builtin.apt:
+    name: icdiff
   become: yes
 
 - name: Install expect for automating shell interaction
-  ansible.builtin.apt: pkg=expect
+  ansible.builtin.apt:
+    name: expect
   become: yes
 
 - name: Install fdupes for finding duplicate files on filesystem
-  ansible.builtin.apt: pkg=fdupes
+  ansible.builtin.apt:
+    name: fdupes
   become: yes
 
 - name: Install bc command line calculator
-  ansible.builtin.apt: pkg=bc
+  ansible.builtin.apt:
+    name: bc
   become: yes
 
 - name: Install xclip clipboard utility
-  ansible.builtin.apt: pkg=xclip
+  ansible.builtin.apt:
+    name: xclip
   become: yes
 
 - name: Install jq json processor
-  ansible.builtin.apt: pkg=jq
+  ansible.builtin.apt:
+    name: jq
   become: yes

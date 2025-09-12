@@ -1,5 +1,6 @@
 - name: Install flatpak application deployment framework for desktop apps
-  ansible.builtin.apt: pkg=flatpak
+  ansible.builtin.apt:
+    name: flatpak
   become: yes
 
 - name: Add the flathub remote
@@ -9,15 +10,18 @@
   become: yes
 
 - name: Install snap daemon
-  ansible.builtin.apt: pkg=snapd
+  ansible.builtin.apt:
+    name: snapd
   become: yes
 
 - name: Install ansible
-  ansible.builtin.apt: pkg=ansible
+  ansible.builtin.apt:
+    name: ansible
   become: yes
 
 - name: Install vagrant
-  ansible.builtin.apt: pkg=vagrant
+  ansible.builtin.apt:
+    name: vagrant
   become: yes
 
 - name: Download Terraform installation resource
@@ -32,19 +36,27 @@
     dest: /tmp
 
 - name: Install Terraform
-  ansible.builtin.copy: src=/tmp/terraform dest=/usr/local/bin remote_src=yes mode=0755
+  ansible.builtin.copy:
+    src: /tmp/terraform
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: '0755'
   become: yes
 
 - name: Install packer
-  ansible.builtin.apt: pkg=packer
+  ansible.builtin.apt:
+    name: packer
   become: yes
 
 - name: Install awscli
-  ansible.builtin.apt: pkg=awscli
+  ansible.builtin.apt:
+    name: awscli
   become: yes
 
 - name: Install vim plugins
-  ansible.builtin.git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: ~/.vim/bundle/{{ item.dest }}
   with_items:
     - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
     - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}

@@ -1,12 +1,18 @@
 - name: Install lein
-  ansible.builtin.get_url: url=https://raw.github.com/technomancy/leiningen/stable/bin/lein dest=/usr/local/bin/lein mode=0755
+  ansible.builtin.get_url:
+    url: https://raw.github.com/technomancy/leiningen/stable/bin/lein
+    dest: /usr/local/bin/lein
+    mode: '0755'
   become: yes
 
 - name: Install JDK
-  ansible.builtin.apt: pkg=default-jdk
+  ansible.builtin.apt:
+    name: default-jdk
   become: yes
 
 - name: Install vim plugin
-  ansible.builtin.git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: ~/.vim/bundle/{{ item.dest }}
   with_items:
     - { repo: "https://github.com/tpope/vim-fireplace.git", dest: vim-fireplace }

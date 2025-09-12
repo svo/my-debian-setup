@@ -1,9 +1,11 @@
 - name: Install bash completion
-  ansible.builtin.apt: pkg=bash-completion
+  ansible.builtin.apt:
+    pkg: bash-completion
   become: yes
 
 - name: Install git
-  ansible.builtin.apt: pkg=git-core
+  ansible.builtin.apt:
+    pkg: git-core
   become: yes
 
 - name: Setup terminal for git

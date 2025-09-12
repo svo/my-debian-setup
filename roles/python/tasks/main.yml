@@ -1,3 +1,4 @@
 - name: Install python
-  ansible.builtin.apt: pkg=python3-full
+  ansible.builtin.apt:
+    name: python3-full
   become: yes
