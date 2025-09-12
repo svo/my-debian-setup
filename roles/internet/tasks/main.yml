@@ -43,7 +43,7 @@
   ansible.builtin.get_url:
     url: >
       https://github.com/ferdium/ferdium-app/releases/download/v7.1.0/Ferdium-linux-7.1.0-
-      {%- if ansible_architecture == 'aarch64' -%}arm64{%- else -%}amd64{%- endif -%}.deb
+      {% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.deb
     dest: ~/Installs/ferdium.deb
     mode: '0644'
 
