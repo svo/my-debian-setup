@@ -1,107 +1,107 @@
 - name: Install firewall
-  apt: pkg=ufw
+  ansible.builtin.apt: pkg=ufw
   become: yes
 
 - name: Install network bridge utils
-  apt: pkg=bridge-utils
+  ansible.builtin.apt: pkg=bridge-utils
   become: yes
 
 - name: Install dnsmasq
-  apt: pkg=dnsmasq
+  ansible.builtin.apt: pkg=dnsmasq
   become: yes
 
 - name: Install wireless tools
-  apt: pkg=wireless-tools
+  ansible.builtin.apt: pkg=wireless-tools
   become: yes
 
 - name: Install graphical wireless scanner
-  apt: pkg=linssid
+  ansible.builtin.apt: pkg=linssid
   become: yes
 
 - name: Install avahi
-  apt: pkg=avahi-daemon
+  ansible.builtin.apt: pkg=avahi-daemon
   become: yes
 
 - name: Install k4dirstat disk Usage utility
-  apt: pkg=k4dirstat
+  ansible.builtin.apt: pkg=k4dirstat
   become: yes
 
 - name: Install Kupfer launcher
-  apt: pkg=kupfer
+  ansible.builtin.apt: pkg=kupfer
   become: yes
 
 - name: Install apt file
-  apt: pkg=apt-file
+  ansible.builtin.apt: pkg=apt-file
   become: yes
 
 - name: Install duplicity for backup
-  apt: pkg=duplicity update_cache=yes
+  ansible.builtin.apt: pkg=duplicity update_cache=yes
   become: yes
 
 - name: Install Déjà Dup for backup
-  apt: pkg=deja-dup
+  ansible.builtin.apt: pkg=deja-dup
   become: yes
 
 - name: Install NFS
-  apt: pkg=nfs-kernel-server
+  ansible.builtin.apt: pkg=nfs-kernel-server
   become: yes
 
 - name: Install ntfs-3g for NTFS filesystem support
-  apt: pkg=ntfs-3g
+  ansible.builtin.apt: pkg=ntfs-3g
   become: yes
 
 - name: Install gpart/ed partition
-  apt: pkg=gpart,gparted
+  ansible.builtin.apt: pkg=gpart,gparted
   become: yes
 
 - name: Install ddrescue
-  apt: pkg=gddrescue
+  ansible.builtin.apt: pkg=gddrescue
   become: yes
 
 - name: Install testdisk
-  apt: pkg=testdisk
+  ansible.builtin.apt: pkg=testdisk
   become: yes
 
 - name: Install safecopy
-  apt: pkg=safecopy
+  ansible.builtin.apt: pkg=safecopy
   become: yes
 
 - name: Install foremost to recover lost files
-  apt: pkg=foremost
+  ansible.builtin.apt: pkg=foremost
   become: yes
 
 - name: Install xclip clipboard utility
-  apt: pkg=xclip
+  ansible.builtin.apt: pkg=xclip
   become: yes
 
 - name: Add pbcopy/pbpaste alias to bashrc
-  lineinfile: dest=~/.bashrc line={{ item }}
+  ansible.builtin.lineinfile: dest=~/.bashrc line={{ item }}
   with_items:
     - alias pbcopy='xclip -selection clipboard'
     - alias pbpaste='xclip -selection clipboard -o'
 
 - name: Install CopyQ clipboard manager
-  apt: pkg=copyq
+  ansible.builtin.apt: pkg=copyq
   become: yes
 
 - name: Download topgrade installation resource
-  get_url: url=https://github.com/r-darwish/topgrade/releases/download/v8.2.0/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz dest=~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz checksum=sha256:5d2588260673d93355744a974f85cff8cb9eceb60fff45e26f625130f051151c
+  ansible.builtin.get_url: url=https://github.com/r-darwish/topgrade/releases/download/v8.2.0/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz dest=~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz checksum=sha256:5d2588260673d93355744a974f85cff8cb9eceb60fff45e26f625130f051151c
 
 - name: Unarchive topgrade
-  unarchive: src=~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz remote_src=yes dest=/tmp
+  ansible.builtin.unarchive: src=~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz remote_src=yes dest=/tmp
 
 - name: Install topgrade
-  copy: src=/tmp/topgrade dest=/usr/local/bin remote_src=yes mode=0755
+  ansible.builtin.copy: src=/tmp/topgrade dest=/usr/local/bin remote_src=yes mode=0755
   become: yes
 
 - name: Install Cryptmount for encrypted filesystems
-  apt: pkg=cryptmount
+  ansible.builtin.apt: pkg=cryptmount
   become: yes
 
 - name: Install bluetooth support
-  apt: pkg=bluez,blueman
+  ansible.builtin.apt: pkg=bluez,blueman
   become: yes
 
 - name: Install world clock
-  apt: pkg=gnome-clocks
+  ansible.builtin.apt: pkg=gnome-clocks
   become: yes

@@ -1,50 +1,50 @@
 - name: Install flatpak application deployment framework for desktop apps
-  apt: pkg=flatpak
+  ansible.builtin.apt: pkg=flatpak
   become: yes
 
 - name: Add the flathub remote
-  flatpak_remote:
+  community.general.flatpak_remote:
     name: flathub
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
   become: yes
 
 - name: Install snap daemon
-  apt: pkg=snapd
+  ansible.builtin.apt: pkg=snapd
   become: yes
 
 - name: Install ansible
-  apt: pkg=ansible
+  ansible.builtin.apt: pkg=ansible
   become: yes
 
 - name: Install vagrant
-  apt: pkg=vagrant
+  ansible.builtin.apt: pkg=vagrant
   become: yes
 
 - name: Download Terraform installation resource
-  get_url:
+  ansible.builtin.get_url:
     url: "https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
     dest: "~/Installs/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
 
 - name: Unarchive Terraform
-  unarchive:
+  ansible.builtin.unarchive:
     src: "~/Installs/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
     remote_src: yes
     dest: /tmp
 
 - name: Install Terraform
-  copy: src=/tmp/terraform dest=/usr/local/bin remote_src=yes mode=0755
+  ansible.builtin.copy: src=/tmp/terraform dest=/usr/local/bin remote_src=yes mode=0755
   become: yes
 
 - name: Install packer
-  apt: pkg=packer
+  ansible.builtin.apt: pkg=packer
   become: yes
 
 - name: Install awscli
-  apt: pkg=awscli
+  ansible.builtin.apt: pkg=awscli
   become: yes
 
 - name: Install vim plugins
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  ansible.builtin.git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
   with_items:
     - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
     - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}

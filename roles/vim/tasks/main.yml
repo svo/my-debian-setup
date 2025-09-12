@@ -1,32 +1,32 @@
 - name: Install vim
-  apt: pkg=vim,vim-nox,vim-addon-manager
+  ansible.builtin.apt: pkg=vim,vim-nox,vim-addon-manager
   become: yes
 
 - name: Install vim plugin packages
-  apt: pkg=vim-{{ item }}
+  ansible.builtin.apt: pkg=vim-{{ item }}
   with_items: "{{ vim_plugin_package }}"
   become: yes
 
 - name: Install vim plugins
-  command: vam install {{ item }}
+  ansible.builtin.command: vam install {{ item }}
   with_items: "{{ vim_plugin_package }}"
 
 - name: Setup paths for vim
-  file: path={{ item }} state=directory
+  ansible.builtin.file: path={{ item }} state=directory
   with_items:
     - ~/.vim/autoload
     - ~/.vim/bundle
     - ~/.vim/ftplugin
 
 - name: Set kotlin vim settings
-  copy:
+  ansible.builtin.copy:
     dest: ~/.vim/ftplugin/kotlin.vim
     content: |
       setlocal  tabstop=4
       setlocal  shiftwidth=4
 
 - name: Install vim plugin
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  ansible.builtin.git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
   with_items:
     - {repo: "https://github.com/scrooloose/nerdtree.git", dest: nerdtree}
     - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", dest: nerdtree-git-plugin}
@@ -40,7 +40,7 @@
     - {repo: "https://github.com/udalov/kotlin-vim.git", dest: kotlin-vim}
 
 - name: Update .vimrc
-  blockinfile:
+  ansible.builtin.blockinfile:
     create: yes
     marker: '"# {mark} ANSIBLE MANAGED BLOCK"'
     path: ~/.vimrc
@@ -58,4 +58,4 @@
       autocmd BufEnter * EnableStripWhitespaceOnSave
 
 - name: Set vim as git editor
-  git_config: name=core.editor scope=global value=vim
+  community.general.git_config: name=core.editor scope=global value=vim

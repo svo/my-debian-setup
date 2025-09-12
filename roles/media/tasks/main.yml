@@ -1,61 +1,61 @@
 - name: Add jellyfin apt key
-  apt_key:
+  ansible.builtin.apt_key:
     url: https://repo.jellyfin.org/jellyfin_team.gpg.key
     keyring: /etc/apt/trusted.gpg.d/jellyfin.gpg
   become: yes
 
 - name: Install jellyfin apt repository
-  apt_repository: repo='deb https://repo.jellyfin.org/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main' state=present
+  ansible.builtin.apt_repository: repo='deb https://repo.jellyfin.org/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main' state=present
   become: yes
 
 - name: Install jellyfin
-  apt: name=jellyfin update_cache=yes
+  ansible.builtin.apt: name=jellyfin update_cache=yes
   become: yes
 
 - name: Install commandline metadata tool
-  apt: pkg=libimage-exiftool-perl
+  ansible.builtin.apt: pkg=libimage-exiftool-perl
   become: yes
 
 - name: Install VLC media player
-  apt: pkg=vlc
+  ansible.builtin.apt: pkg=vlc
   become: yes
 
 - name: Add spotify apt key
-  apt_key: url=https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg
+  ansible.builtin.apt_key: url=https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg
   become: yes
 
 - name: Add spotify repository
-  apt_repository: repo="deb http://repository.spotify.com stable non-free"
+  ansible.builtin.apt_repository: repo="deb http://repository.spotify.com stable non-free"
   become: yes
 
 - name: Install spotify client
-  apt: pkg=spotify-client update_cache=yes
+  ansible.builtin.apt: pkg=spotify-client update_cache=yes
   ignore_errors: yes
   become: yes
 
 - name: Install GIMP photo editor
-  apt: pkg=gimp
+  ansible.builtin.apt: pkg=gimp
   become: yes
 
 - name: Install handbrake video converter
-  apt: pkg=handbrake
+  ansible.builtin.apt: pkg=handbrake
   become: yes
 
 - name: Download OpenAudible .deb
-  get_url: url=https://github.com/openaudible/openaudible/releases/download/v3.5.3/OpenAudible_3.5.3_x86_64.deb dest=~/Installs/OpenAudible_x86_64.deb
+  ansible.builtin.get_url: url=https://github.com/openaudible/openaudible/releases/download/v3.5.3/OpenAudible_3.5.3_x86_64.deb dest=~/Installs/OpenAudible_x86_64.deb
 
 - name: Install OpenAudible
-  apt: deb=/tmp/Installs/OpenAudible_x86_64.deb
+  ansible.builtin.apt: deb=/tmp/Installs/OpenAudible_x86_64.deb
   become: yes
 
 - name: Install Cheese for webcam support
-  apt: pkg=cheese
+  ansible.builtin.apt: pkg=cheese
   become: yes
 
 - name: Install capture program for webcam
-  apt: pkg=motion
+  ansible.builtin.apt: pkg=motion
   become: yes
 
 - name: Install mkv video tools
-  apt: pkg=mkvtoolnix,mkvtoolnix-gui
+  ansible.builtin.apt: pkg=mkvtoolnix,mkvtoolnix-gui
   become: yes

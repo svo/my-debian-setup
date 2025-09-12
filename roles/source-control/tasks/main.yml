@@ -1,13 +1,13 @@
 - name: Install bash completion
-  apt: pkg=bash-completion
+  ansible.builtin.apt: pkg=bash-completion
   become: yes
 
 - name: Install git
-  apt: pkg=git-core
+  ansible.builtin.apt: pkg=git-core
   become: yes
 
 - name: Setup terminal for git
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: ~/.bashrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
     create: yes
@@ -25,7 +25,7 @@
       fi
 
 - name: Setup git colors
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: ~/.gitconfig
     create: yes
     block: |

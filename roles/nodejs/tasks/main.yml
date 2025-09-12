@@ -1,17 +1,17 @@
 - name: Get nodejs setup script
-  get_url: url=https://deb.nodesource.com/setup_lts.x dest=~/Installs/nodejs-installer
+  ansible.builtin.get_url: url=https://deb.nodesource.com/setup_lts.x dest=~/Installs/nodejs-installer
 
 - name: Setup nodejs
-  command: /bin/bash /tmp/Installs/nodejs-installer
+  ansible.builtin.command: /bin/bash /tmp/Installs/nodejs-installer
   become: yes
 
 - name: Install nodejs
-  apt: pkg=nodejs state=latest
+  ansible.builtin.apt: pkg=nodejs state=latest
   become: yes
 
 - name: Install Electron Packager
-  npm: name=electron-packager version=14.0.4 global=yes
+  community.general.npm: name=electron-packager version=14.0.4 global=yes
   become: yes
 
 - name: Install JavaScript vim plugin
-  git: repo=https://github.com/pangloss/vim-javascript.git dest=~/.vim/bundle/vim-javascript
+  ansible.builtin.git: repo=https://github.com/pangloss/vim-javascript.git dest=~/.vim/bundle/vim-javascript

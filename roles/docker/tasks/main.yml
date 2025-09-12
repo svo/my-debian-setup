@@ -1,13 +1,13 @@
 - name: Add docker apt key
-  apt_key:
+  ansible.builtin.apt_key:
     url: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
     keyring: /etc/apt/trusted.gpg.d/docker.gpg
   become: yes
 
 - name: Install docker apt repository
-  apt_repository: repo='deb https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable' state=present
+  ansible.builtin.apt_repository: repo='deb https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable' state=present
   become: yes
 
 - name: Install docker
-  apt: name=docker-ce update_cache=yes
+  ansible.builtin.apt: name=docker-ce update_cache=yes
   become: yes

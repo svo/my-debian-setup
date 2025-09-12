@@ -1,105 +1,105 @@
 - name: Install htop for process monitoring
-  apt: pkg=htop
+  ansible.builtin.apt: pkg=htop
   become: yes
 
 - name: Install smem for memory monitoring
-  apt: pkg=smem
+  ansible.builtin.apt: pkg=smem
   become: yes
 
 - name: Install iftop for network monitoring
-  apt: pkg=iftop
+  ansible.builtin.apt: pkg=iftop
   become: yes
 
 - name: Install iotop for disk I/O monitoring
-  apt: pkg=iotop
+  ansible.builtin.apt: pkg=iotop
   become: yes
 
 - name: Install Wireshark
-  apt: pkg=wireshark
+  ansible.builtin.apt: pkg=wireshark
   become: yes
 
 - name: Install TaskWarrior To-Do
-  apt: pkg=taskwarrior
+  ansible.builtin.apt: pkg=taskwarrior
   become: yes
 
 - name: Install TaskWarrior terminal interface
-  apt: pkg=vit
+  ansible.builtin.apt: pkg=vit
   become: yes
 
 - name: Install PlantUML diagramming tool
-  apt: pkg=plantuml
+  ansible.builtin.apt: pkg=plantuml
   become: yes
 
 - name: Install cloc for counting lines of code
-  apt: pkg=cloc
+  ansible.builtin.apt: pkg=cloc
   become: yes
 
 - name: Install terminator terminal emulator
-  apt: pkg=terminator
+  ansible.builtin.apt: pkg=terminator
   become: yes
 
 - name: Create terminator configuration directory
-  file: path=~/.config/terminator state=directory
+  ansible.builtin.file: path=~/.config/terminator state=directory
 
 - name: Copy terminator configuration
-  copy: src=terminator.config dest=~/.config/terminator/config
+  ansible.builtin.copy: src=terminator.config dest=~/.config/terminator/config
 
 - name: Install tmux terminal multiplexer
-  apt: pkg=tmux
+  ansible.builtin.apt: pkg=tmux
   become: yes
 
 - name: Install lshw for listing hardware details
-  apt: pkg=lshw
+  ansible.builtin.apt: pkg=lshw
   become: yes
 
 - name: Install Midnight Commander file manager
-  apt: pkg=mc
+  ansible.builtin.apt: pkg=mc
   become: yes
 
 - name: Install curl
-  apt: pkg=curl
+  ansible.builtin.apt: pkg=curl
   become: yes
 
 - name: Install whois
-  apt: pkg=whois
+  ansible.builtin.apt: pkg=whois
   become: yes
 
 - name: Install HTTPie cURL wrapper
-  apt: pkg=httpie
+  ansible.builtin.apt: pkg=httpie
   become: yes
 
 - name: Install NCurses disk Usage utility
-  apt: pkg=ncdu
+  ansible.builtin.apt: pkg=ncdu
   become: yes
 
 - name: Install wondershaper for limiting adapter bandwidth
-  apt: pkg=wondershaper
+  ansible.builtin.apt: pkg=wondershaper
   become: yes
 
 - name: Install locate
-  apt: pkg=plocate
+  ansible.builtin.apt: pkg=plocate
   become: yes
 
 - name: Install icdiff side by side diff tool
-  apt: pkg=icdiff
+  ansible.builtin.apt: pkg=icdiff
   become: yes
 
 - name: Install expect for automating shell interaction
-  apt: pkg=expect
+  ansible.builtin.apt: pkg=expect
   become: yes
 
 - name: Install fdupes for finding duplicate files on filesystem
-  apt: pkg=fdupes
+  ansible.builtin.apt: pkg=fdupes
   become: yes
 
 - name: Install bc command line calculator
-  apt: pkg=bc
+  ansible.builtin.apt: pkg=bc
   become: yes
 
 - name: Install xclip clipboard utility
-  apt: pkg=xclip
+  ansible.builtin.apt: pkg=xclip
   become: yes
 
 - name: Install jq json processor
-  apt: pkg=jq
+  ansible.builtin.apt: pkg=jq
   become: yes
