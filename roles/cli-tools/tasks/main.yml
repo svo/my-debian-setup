@@ -52,11 +52,13 @@
   ansible.builtin.file:
     path: ~/.config/terminator
     state: directory
+    mode: '0755'
 
 - name: Copy terminator configuration
   ansible.builtin.copy:
     src: terminator.config
     dest: ~/.config/terminator/config
+    mode: '0644'
 
 - name: Install tmux terminal multiplexer
   ansible.builtin.apt:

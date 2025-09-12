@@ -13,6 +13,7 @@
     path: ~/.bashrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
     create: true
+    mode: '0644'
     block: |
       if [ -f /usr/share/bash-completion/completions/git ]; then
           source /usr/share/bash-completion/completions/git
@@ -30,6 +31,7 @@
   ansible.builtin.blockinfile:
     path: ~/.gitconfig
     create: true
+    mode: '0644'
     block: |
       [color]
         branch = auto

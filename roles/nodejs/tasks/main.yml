@@ -2,6 +2,7 @@
   ansible.builtin.get_url:
     url: https://deb.nodesource.com/setup_lts.x
     dest: ~/Installs/nodejs-installer
+    mode: '0755'
 
 - name: Setup nodejs
   ansible.builtin.command: /bin/bash /tmp/Installs/nodejs-installer

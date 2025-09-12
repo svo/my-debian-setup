@@ -18,11 +18,13 @@
   ansible.builtin.file:
     path: $HOME/go
     state: directory
+    mode: '0755'
 
 - name: Update ~/.profile
   ansible.builtin.blockinfile:
     create: true
     path: ~/.profile
+    mode: '0644'
     block: |
       export GOPATH=$HOME/go
       export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin

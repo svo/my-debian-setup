@@ -28,6 +28,7 @@
   ansible.builtin.get_url:
     url: "https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
     dest: "~/Installs/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
+    mode: '0644'
 
 - name: Unarchive Terraform
   ansible.builtin.unarchive:

@@ -57,6 +57,7 @@
   ansible.builtin.get_url:
     url: https://github.com/openaudible/openaudible/releases/download/v3.5.3/OpenAudible_3.5.3_x86_64.deb
     dest: ~/Installs/OpenAudible_x86_64.deb
+    mode: '0644'
 
 - name: Install OpenAudible
   ansible.builtin.apt:

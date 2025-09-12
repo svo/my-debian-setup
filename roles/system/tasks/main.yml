@@ -112,6 +112,7 @@
     url: https://github.com/r-darwish/topgrade/releases/download/v8.2.0/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz
     dest: ~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz
     checksum: sha256:5d2588260673d93355744a974f85cff8cb9eceb60fff45e26f625130f051151c
+    mode: '0644'
 
 - name: Unarchive topgrade
   ansible.builtin.unarchive:

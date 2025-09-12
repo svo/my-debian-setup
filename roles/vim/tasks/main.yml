@@ -20,6 +20,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
+    mode: '0755'
   with_items:
     - ~/.vim/autoload
     - ~/.vim/bundle
@@ -28,6 +29,7 @@
 - name: Set kotlin vim settings
   ansible.builtin.copy:
     dest: ~/.vim/ftplugin/kotlin.vim
+    mode: '0644'
     content: |
       setlocal  tabstop=4
       setlocal  shiftwidth=4
@@ -53,6 +55,7 @@
     create: true
     marker: '"# {mark} ANSIBLE MANAGED BLOCK"'
     path: ~/.vimrc
+    mode: '0644'
     block: |
       execute pathogen#infect()
       syntax on
