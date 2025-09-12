@@ -4,7 +4,7 @@
   become: true
 
 - name: Disable tor startup
-  ansible.builtin.shell: update-rc.d tor disable
+  ansible.builtin.command: update-rc.d tor disable
   become: true
 
 - name: Install nmap for network discovery and security auditing

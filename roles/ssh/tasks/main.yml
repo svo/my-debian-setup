@@ -9,5 +9,5 @@
   become: true
 
 - name: Disable SSHD startup
-  ansible.builtin.shell: update-rc.d ssh disable
+  ansible.builtin.command: update-rc.d ssh disable
   become: true
