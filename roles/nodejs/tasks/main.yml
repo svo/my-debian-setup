@@ -7,6 +7,7 @@
 - name: Setup nodejs
   ansible.builtin.command: /bin/bash /tmp/Installs/nodejs-installer
   become: true
+  changed_when: true
 
 - name: Install nodejs
   ansible.builtin.apt:

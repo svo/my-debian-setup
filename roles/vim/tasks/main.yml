@@ -15,6 +15,7 @@
 - name: Install vim plugins
   ansible.builtin.command: vam install {{ item }}
   with_items: "{{ vim_plugin_package }}"
+  changed_when: true
 
 - name: Setup paths for vim
   ansible.builtin.file:
