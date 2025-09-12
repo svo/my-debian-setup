@@ -1,28 +1,28 @@
 - name: Install flatpak application deployment framework for desktop apps
   ansible.builtin.apt:
     name: flatpak
-  become: yes
+  become: true
 
 - name: Add the flathub remote
   community.general.flatpak_remote:
     name: flathub
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
-  become: yes
+  become: true
 
 - name: Install snap daemon
   ansible.builtin.apt:
     name: snapd
-  become: yes
+  become: true
 
 - name: Install ansible
   ansible.builtin.apt:
     name: ansible
-  become: yes
+  become: true
 
 - name: Install vagrant
   ansible.builtin.apt:
     name: vagrant
-  become: yes
+  become: true
 
 - name: Download Terraform installation resource
   ansible.builtin.get_url:
@@ -32,26 +32,26 @@
 - name: Unarchive Terraform
   ansible.builtin.unarchive:
     src: "~/Installs/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
-    remote_src: yes
+    remote_src: true
     dest: /tmp
 
 - name: Install Terraform
   ansible.builtin.copy:
     src: /tmp/terraform
     dest: /usr/local/bin
-    remote_src: yes
+    remote_src: true
     mode: '0755'
-  become: yes
+  become: true
 
 - name: Install packer
   ansible.builtin.apt:
     name: packer
-  become: yes
+  become: true
 
 - name: Install awscli
   ansible.builtin.apt:
     name: awscli
-  become: yes
+  become: true
 
 - name: Install vim plugins
   ansible.builtin.git:

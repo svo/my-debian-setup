@@ -1,7 +1,7 @@
 - name: Install Gpick color picker
   ansible.builtin.apt:
     pkg: gpick
-  become: yes
+  become: true
 
 - name: Download boost note
   ansible.builtin.get_url:

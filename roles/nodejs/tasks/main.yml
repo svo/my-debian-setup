@@ -5,20 +5,20 @@
 
 - name: Setup nodejs
   ansible.builtin.command: /bin/bash /tmp/Installs/nodejs-installer
-  become: yes
+  become: true
 
 - name: Install nodejs
   ansible.builtin.apt:
     name: nodejs
     state: latest
-  become: yes
+  become: true
 
 - name: Install Electron Packager
   community.general.npm:
     name: electron-packager
     version: 14.0.4
-    global: yes
-  become: yes
+    global: true
+  become: true
 
 - name: Install JavaScript vim plugin
   ansible.builtin.git:

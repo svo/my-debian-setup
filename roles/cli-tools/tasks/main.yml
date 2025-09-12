@@ -1,52 +1,52 @@
 - name: Install htop for process monitoring
   ansible.builtin.apt:
     name: htop
-  become: yes
+  become: true
 
 - name: Install smem for memory monitoring
   ansible.builtin.apt:
     name: smem
-  become: yes
+  become: true
 
 - name: Install iftop for network monitoring
   ansible.builtin.apt:
     name: iftop
-  become: yes
+  become: true
 
 - name: Install iotop for disk I/O monitoring
   ansible.builtin.apt:
     name: iotop
-  become: yes
+  become: true
 
 - name: Install Wireshark
   ansible.builtin.apt:
     name: wireshark
-  become: yes
+  become: true
 
 - name: Install TaskWarrior To-Do
   ansible.builtin.apt:
     name: taskwarrior
-  become: yes
+  become: true
 
 - name: Install TaskWarrior terminal interface
   ansible.builtin.apt:
     name: vit
-  become: yes
+  become: true
 
 - name: Install PlantUML diagramming tool
   ansible.builtin.apt:
     name: plantuml
-  become: yes
+  become: true
 
 - name: Install cloc for counting lines of code
   ansible.builtin.apt:
     name: cloc
-  become: yes
+  become: true
 
 - name: Install terminator terminal emulator
   ansible.builtin.apt:
     name: terminator
-  become: yes
+  become: true
 
 - name: Create terminator configuration directory
   ansible.builtin.file:
@@ -61,74 +61,74 @@
 - name: Install tmux terminal multiplexer
   ansible.builtin.apt:
     name: tmux
-  become: yes
+  become: true
 
 - name: Install lshw for listing hardware details
   ansible.builtin.apt:
     name: lshw
-  become: yes
+  become: true
 
 - name: Install Midnight Commander file manager
   ansible.builtin.apt:
     name: mc
-  become: yes
+  become: true
 
 - name: Install curl
   ansible.builtin.apt:
     name: curl
-  become: yes
+  become: true
 
 - name: Install whois
   ansible.builtin.apt:
     name: whois
-  become: yes
+  become: true
 
 - name: Install HTTPie cURL wrapper
   ansible.builtin.apt:
     name: httpie
-  become: yes
+  become: true
 
 - name: Install NCurses disk Usage utility
   ansible.builtin.apt:
     name: ncdu
-  become: yes
+  become: true
 
 - name: Install wondershaper for limiting adapter bandwidth
   ansible.builtin.apt:
     name: wondershaper
-  become: yes
+  become: true
 
 - name: Install locate
   ansible.builtin.apt:
     name: plocate
-  become: yes
+  become: true
 
 - name: Install icdiff side by side diff tool
   ansible.builtin.apt:
     name: icdiff
-  become: yes
+  become: true
 
 - name: Install expect for automating shell interaction
   ansible.builtin.apt:
     name: expect
-  become: yes
+  become: true
 
 - name: Install fdupes for finding duplicate files on filesystem
   ansible.builtin.apt:
     name: fdupes
-  become: yes
+  become: true
 
 - name: Install bc command line calculator
   ansible.builtin.apt:
     name: bc
-  become: yes
+  become: true
 
 - name: Install xclip clipboard utility
   ansible.builtin.apt:
     name: xclip
-  become: yes
+  become: true
 
 - name: Install jq json processor
   ansible.builtin.apt:
     name: jq
-  become: yes
+  become: true

@@ -1,98 +1,98 @@
 - name: Install firewall
   ansible.builtin.apt:
     pkg: ufw
-  become: yes
+  become: true
 
 - name: Install network bridge utils
   ansible.builtin.apt:
     pkg: bridge-utils
-  become: yes
+  become: true
 
 - name: Install dnsmasq
   ansible.builtin.apt:
     pkg: dnsmasq
-  become: yes
+  become: true
 
 - name: Install wireless tools
   ansible.builtin.apt:
     pkg: wireless-tools
-  become: yes
+  become: true
 
 - name: Install graphical wireless scanner
   ansible.builtin.apt:
     pkg: linssid
-  become: yes
+  become: true
 
 - name: Install avahi
   ansible.builtin.apt:
     pkg: avahi-daemon
-  become: yes
+  become: true
 
 - name: Install k4dirstat disk Usage utility
   ansible.builtin.apt:
     pkg: k4dirstat
-  become: yes
+  become: true
 
 - name: Install Kupfer launcher
   ansible.builtin.apt:
     pkg: kupfer
-  become: yes
+  become: true
 
 - name: Install apt file
   ansible.builtin.apt:
     pkg: apt-file
-  become: yes
+  become: true
 
 - name: Install duplicity for backup
   ansible.builtin.apt:
     pkg: duplicity
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 
 - name: Install Déjà Dup for backup
   ansible.builtin.apt:
     pkg: deja-dup
-  become: yes
+  become: true
 
 - name: Install NFS
   ansible.builtin.apt:
     pkg: nfs-kernel-server
-  become: yes
+  become: true
 
 - name: Install ntfs-3g for NTFS filesystem support
   ansible.builtin.apt:
     pkg: ntfs-3g
-  become: yes
+  become: true
 
 - name: Install gpart/ed partition
   ansible.builtin.apt:
     pkg: gpart,gparted
-  become: yes
+  become: true
 
 - name: Install ddrescue
   ansible.builtin.apt:
     pkg: gddrescue
-  become: yes
+  become: true
 
 - name: Install testdisk
   ansible.builtin.apt:
     pkg: testdisk
-  become: yes
+  become: true
 
 - name: Install safecopy
   ansible.builtin.apt:
     pkg: safecopy
-  become: yes
+  become: true
 
 - name: Install foremost to recover lost files
   ansible.builtin.apt:
     pkg: foremost
-  become: yes
+  become: true
 
 - name: Install xclip clipboard utility
   ansible.builtin.apt:
     pkg: xclip
-  become: yes
+  become: true
 
 - name: Add pbcopy/pbpaste alias to bashrc
   ansible.builtin.lineinfile:
@@ -105,7 +105,7 @@
 - name: Install CopyQ clipboard manager
   ansible.builtin.apt:
     pkg: copyq
-  become: yes
+  become: true
 
 - name: Download topgrade installation resource
   ansible.builtin.get_url:
@@ -116,28 +116,28 @@
 - name: Unarchive topgrade
   ansible.builtin.unarchive:
     src: ~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz
-    remote_src: yes
+    remote_src: true
     dest: /tmp
 
 - name: Install topgrade
   ansible.builtin.copy:
     src: /tmp/topgrade
     dest: /usr/local/bin
-    remote_src: yes
-    mode: 0755
-  become: yes
+    remote_src: true
+    mode: '0755'
+  become: true
 
 - name: Install Cryptmount for encrypted filesystems
   ansible.builtin.apt:
     pkg: cryptmount
-  become: yes
+  become: true
 
 - name: Install bluetooth support
   ansible.builtin.apt:
     pkg: bluez,blueman
-  become: yes
+  become: true
 
 - name: Install world clock
   ansible.builtin.apt:
     pkg: gnome-clocks
-  become: yes
+  become: true

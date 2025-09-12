@@ -1,7 +1,7 @@
 - name: Install rbenv ruby version control
   ansible.builtin.apt:
     pkg: rbenv,ruby-build
-  become: yes
+  become: true
 
 - name: Add rbenv to .bashrc
   ansible.builtin.lineinfile:

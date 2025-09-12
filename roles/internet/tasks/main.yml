@@ -1,60 +1,62 @@
 - name: Install lynx command line browser
   ansible.builtin.apt:
     pkg: lynx
-  become: yes
+  become: true
 
 - name: Add brave apt key
   ansible.builtin.apt_key:
     url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     keyring: /usr/share/keyrings/brave-browser-archive-keyring.gpg
-  become: yes
+  become: true
 
 - name: Add brave apt repository
   ansible.builtin.apt_repository:
     repo: 'deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main'
     filename: brave-browser
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 
 - name: Install brave web browser
   ansible.builtin.apt:
     pkg: brave-browser
-  become: yes
+  become: true
 
 - name: Add google apt key
   ansible.builtin.apt_key:
     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
-  become: yes
+  become: true
 
 - name: Add google apt repository
   ansible.builtin.apt_repository:
     repo: 'deb https://dl.google.com/linux/chrome/deb/ stable main'
     filename: google-chrome
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
 
 - name: Install chrome web browser
   ansible.builtin.apt:
     pkg: google-chrome-stable
-  ignore_errors: yes
-  become: yes
+  ignore_errors: true
+  become: true
 
 - name: Download ferdium .deb
   ansible.builtin.get_url:
-    url: "https://github.com/ferdium/ferdium-app/releases/download/v7.1.0/Ferdium-linux-7.1.0-{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.deb"
+    url: >
+      https://github.com/ferdium/ferdium-app/releases/download/v7.1.0/Ferdium-linux-7.1.0-
+      {%- if ansible_architecture == 'aarch64' -%}arm64{%- else -%}amd64{%- endif -%}.deb
     dest: ~/Installs/ferdium.deb
 
 - name: Install ferdium
   ansible.builtin.apt:
     deb: /tmp/Installs/ferdium.deb
-  become: yes
+  become: true
 
 - name: Install Deluge BitTorrent client
   ansible.builtin.apt:
     pkg: deluge
-  become: yes
+  become: true
 
 - name: Install uGet download manager
   ansible.builtin.apt:
     pkg: uget
-  become: yes
+  become: true

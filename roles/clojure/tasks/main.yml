@@ -3,12 +3,12 @@
     url: https://raw.github.com/technomancy/leiningen/stable/bin/lein
     dest: /usr/local/bin/lein
     mode: '0755'
-  become: yes
+  become: true
 
 - name: Install JDK
   ansible.builtin.apt:
     name: default-jdk
-  become: yes
+  become: true
 
 - name: Install vim plugin
   ansible.builtin.git:

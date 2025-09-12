@@ -2,16 +2,16 @@
   ansible.builtin.apt_key:
     url: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
     keyring: /etc/apt/trusted.gpg.d/docker.gpg
-  become: yes
+  become: true
 
 - name: Install docker apt repository
   ansible.builtin.apt_repository:
     repo: 'deb https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
     state: present
-  become: yes
+  become: true
 
 - name: Install docker
   ansible.builtin.apt:
     name: docker-ce
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
