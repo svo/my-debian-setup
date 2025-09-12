@@ -2,6 +2,6 @@
 *.retry
 .vagrant
 .DS_Store
-
+tmp
 express*
 download
