@@ -1,17 +1,29 @@
 ---
-- hosts: all
+- name: Debian setup playbook
+  hosts: all
 
   pre_tasks:
 
     - name: Create Installs directories
-      file: path=~/Installs state=directory
+      ansible.builtin.file:
+        path: ~/Installs
+        state: directory
+        mode: '0755'
 
     - name: Symlink ~/Installs
-      file: src=~/Installs dest=/tmp/Installs state=link
+      ansible.builtin.file:
+        src: ~/Installs
+        dest: /tmp/Installs
+        state: link
 
     - name: Install required packages
-      apt: name=apt-transport-https,ca-certificates,curl,unzip
-      become: yes
+      ansible.builtin.apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - unzip
+      become: true
 
   roles:
     - ssh
@@ -36,5 +48,8 @@
   post_tasks:
 
     - name: Add docker group for user
-      user: name={{ ansible_user_id }} groups=docker append=yes
-      become: yes
+      ansible.builtin.user:
+        name: "{{ ansible_user_id }}"
+        groups: docker
+        append: true
+      become: true
