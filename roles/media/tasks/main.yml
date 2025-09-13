@@ -40,7 +40,7 @@
   ansible.builtin.apt:
     pkg: spotify-client
     update_cache: true
-  ignore_errors: true
+  failed_when: false
   become: true
 
 - name: Install GIMP photo editor

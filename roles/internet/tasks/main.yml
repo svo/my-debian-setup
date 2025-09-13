@@ -36,7 +36,7 @@
 - name: Install chrome web browser
   ansible.builtin.apt:
     pkg: google-chrome-stable
-  ignore_errors: true
+  failed_when: false
   become: true
 
 - name: Download ferdium .deb
