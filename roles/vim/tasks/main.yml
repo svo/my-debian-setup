@@ -39,9 +39,12 @@
   ansible.builtin.git:
     repo: "{{ item.repo }}"
     dest: ~/.vim/bundle/{{ item.dest }}
+    force: true
   with_items:
-    - {repo: "https://github.com/scrooloose/nerdtree.git", dest: nerdtree}
-    - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", dest: nerdtree-git-plugin}
+    - {repo: "https://github.com/lambdalisue/vim-fern.git", dest: vim-fern}
+    - {repo: "https://github.com/lambdalisue/vim-fern-git-status.git", dest: vim-fern-git-status}
+    - {repo: "https://github.com/lambdalisue/vim-fern-hijack.git", dest: vim-fern-hijack}
+    - {repo: "https://github.com/junegunn/fzf.git", dest: fzf}
     - {repo: "https://github.com/ntpeters/vim-better-whitespace.git", dest: vim-better-whitespace}
     - {repo: "https://github.com/airblade/vim-gitgutter.git", dest: vim-gitgutter}
     - {repo: "https://github.com/plasticboy/vim-markdown.git", dest: vim-markdown}
@@ -50,25 +53,34 @@
     - {repo: "https://github.com/tfnico/vim-gradle.git", dest: vim-gradle}
     - {repo: "https://github.com/python-mode/python-mode.git", dest: python-mode}
     - {repo: "https://github.com/udalov/kotlin-vim.git", dest: kotlin-vim}
+    - {repo: "https://github.com/Exafunction/codeium.vim.git", dest: codeium}
+    - {repo: "https://github.com/junegunn/vader.vim.git", dest: vader}
 
 - name: Update .vimrc
   ansible.builtin.blockinfile:
     create: true
-    marker: '"# {mark} ANSIBLE MANAGED BLOCK"'
     path: ~/.vimrc
-    mode: '0644'
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+    mode: "0644"
     block: |
       execute pathogen#infect()
       syntax on
       filetype plugin indent on
       :set tabstop=2
       :set shiftwidth=2
+      :set backspace=indent,eol,start
       :set expandtab
       :set nobackup
       :set noswapfile
-      let g:vim_markdown_folding_style_pythonic = 1
-      map <C-n> :NERDTreeToggle<CR>
+      let $FZF_DEFAULT_COMMAND = 'find . -type f -not -path "*/\.git/*" -not -path "*/__pycache__/*" -not -path "*/.mypy_cache/*"'
+      nmap <C-P> :FZF<CR>
       autocmd BufEnter * EnableStripWhitespaceOnSave
+      autocmd FileType Markdown setlocal spell spelllang=en_au
+      set encoding=utf-8
+      let mapleader = ","
+      imap <Leader>[ <Cmd>call codeium#CycleCompletions(1)<CR>
+      imap <Leader>] <Cmd>call codeium#CycleCompletions(-1)<CR>
+      imap <Leader>. <Cmd>call codeium#Complete()<CR>
 
 - name: Set vim as git editor
   community.general.git_config:
