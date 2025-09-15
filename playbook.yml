@@ -36,6 +36,7 @@
     - ruby
     - iac
     - nginx
+    - claude
     - docker
     - system
     - terminal
