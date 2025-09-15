@@ -1,0 +1,24 @@
+- name: Install htop for process monitoring
+  ansible.builtin.apt:
+    name: htop
+  become: true
+
+- name: Install smem for memory monitoring
+  ansible.builtin.apt:
+    name: smem
+  become: true
+
+- name: Install iftop for network monitoring
+  ansible.builtin.apt:
+    name: iftop
+  become: true
+
+- name: Install iotop for disk I/O monitoring
+  ansible.builtin.apt:
+    name: iotop
+  become: true
+
+- name: Install Wireshark
+  ansible.builtin.apt:
+    name: wireshark
+  become: true

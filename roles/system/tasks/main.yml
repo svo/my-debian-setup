@@ -3,108 +3,44 @@
     pkg: ufw
   become: true
 
-- name: Install network bridge utils
-  ansible.builtin.apt:
-    pkg: bridge-utils
-  become: true
-
-- name: Install dnsmasq
-  ansible.builtin.apt:
-    pkg: dnsmasq
-  become: true
-
-- name: Install wireless tools
-  ansible.builtin.apt:
-    pkg: wireless-tools
-  become: true
-
-- name: Install graphical wireless scanner
-  ansible.builtin.apt:
-    pkg: linssid
-  become: true
-
-- name: Install avahi
-  ansible.builtin.apt:
-    pkg: avahi-daemon
-  become: true
-
-- name: Install k4dirstat disk Usage utility
-  ansible.builtin.apt:
-    pkg: k4dirstat
-  become: true
-
-- name: Install Kupfer launcher
-  ansible.builtin.apt:
-    pkg: kupfer
-  become: true
-
 - name: Install apt file
   ansible.builtin.apt:
     pkg: apt-file
   become: true
 
-- name: Install duplicity for backup
+- name: Install bluetooth support
   ansible.builtin.apt:
-    pkg: duplicity
-    update_cache: true
+    pkg: bluez,blueman
   become: true
 
-- name: Install Déjà Dup for backup
+- name: Install lshw for listing hardware details
   ansible.builtin.apt:
-    pkg: deja-dup
+    name: lshw
   become: true
 
-- name: Install NFS
+- name: Install Midnight Commander file manager
   ansible.builtin.apt:
-    pkg: nfs-kernel-server
+    name: mc
   become: true
 
-- name: Install ntfs-3g for NTFS filesystem support
+- name: Install NCurses disk Usage utility
   ansible.builtin.apt:
-    pkg: ntfs-3g
+    name: ncdu
   become: true
 
-- name: Install gpart/ed partition
+- name: Install wondershaper for limiting adapter bandwidth
   ansible.builtin.apt:
-    pkg: gpart,gparted
+    name: wondershaper
   become: true
 
-- name: Install ddrescue
+- name: Install locate
   ansible.builtin.apt:
-    pkg: gddrescue
+    name: plocate
   become: true
 
-- name: Install testdisk
+- name: Install fdupes for finding duplicate files on filesystem
   ansible.builtin.apt:
-    pkg: testdisk
-  become: true
-
-- name: Install safecopy
-  ansible.builtin.apt:
-    pkg: safecopy
-  become: true
-
-- name: Install foremost to recover lost files
-  ansible.builtin.apt:
-    pkg: foremost
-  become: true
-
-- name: Install xclip clipboard utility
-  ansible.builtin.apt:
-    pkg: xclip
-  become: true
-
-- name: Add pbcopy/pbpaste alias to bashrc
-  ansible.builtin.lineinfile:
-    dest: ~/.bashrc
-    line: "{{ item }}"
-  with_items:
-    - alias pbcopy='xclip -selection clipboard'
-    - alias pbpaste='xclip -selection clipboard -o'
-
-- name: Install CopyQ clipboard manager
-  ansible.builtin.apt:
-    pkg: copyq
+    name: fdupes
   become: true
 
 - name: Download topgrade installation resource
@@ -126,19 +62,4 @@
     dest: /usr/local/bin
     remote_src: true
     mode: '0755'
-  become: true
-
-- name: Install Cryptmount for encrypted filesystems
-  ansible.builtin.apt:
-    pkg: cryptmount
-  become: true
-
-- name: Install bluetooth support
-  ansible.builtin.apt:
-    pkg: bluez,blueman
-  become: true
-
-- name: Install world clock
-  ansible.builtin.apt:
-    pkg: gnome-clocks
   become: true

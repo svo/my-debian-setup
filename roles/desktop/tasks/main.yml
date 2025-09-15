@@ -1,0 +1,19 @@
+- name: Install k4dirstat disk Usage utility
+  ansible.builtin.apt:
+    pkg: k4dirstat
+  become: true
+
+- name: Install Kupfer launcher
+  ansible.builtin.apt:
+    pkg: kupfer
+  become: true
+
+- name: Install CopyQ clipboard manager
+  ansible.builtin.apt:
+    pkg: copyq
+  become: true
+
+- name: Install world clock
+  ansible.builtin.apt:
+    pkg: gnome-clocks
+  become: true

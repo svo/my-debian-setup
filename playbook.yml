@@ -27,23 +27,28 @@
 
   roles:
     - ssh
-    - python
-    - source-control
+    - git
     - vim
-    - system
-    - security
-    - cli-tools
-    - infrastructure-as-code
-    - media
+    - python
+    - golang
     - clojure
     - nodejs
     - ruby
-    - internet
-    - docker
-    - office
-    - golang
-    - act
+    - iac
     - nginx
+    - docker
+    - system
+    - terminal
+    - security
+    - monitoring
+    - networking
+    - development
+    - storage
+    - todo
+    - media
+    - desktop
+    - internet
+    - office
 
   post_tasks:
 

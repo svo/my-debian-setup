@@ -1,0 +1,53 @@
+- name: Install cloc for counting lines of code
+  ansible.builtin.apt:
+    name: cloc
+  become: true
+
+- name: Install curl
+  ansible.builtin.apt:
+    name: curl
+  become: true
+
+
+- name: Install HTTPie cURL wrapper
+  ansible.builtin.apt:
+    name: httpie
+  become: true
+
+- name: Install icdiff side by side diff tool
+  ansible.builtin.apt:
+    name: icdiff
+  become: true
+
+- name: Install expect for automating shell interaction
+  ansible.builtin.apt:
+    name: expect
+  become: true
+
+- name: Install bc command line calculator
+  ansible.builtin.apt:
+    name: bc
+  become: true
+
+- name: Install jq json processor
+  ansible.builtin.apt:
+    name: jq
+  become: true
+
+- name: Add pbcopy/pbpaste alias to bashrc
+  ansible.builtin.lineinfile:
+    dest: ~/.bashrc
+    line: "{{ item }}"
+  with_items:
+    - alias pbcopy='xclip -selection clipboard'
+    - alias pbpaste='xclip -selection clipboard -o'
+
+
+- name: Install PlantUML diagramming tool
+  ansible.builtin.apt:
+    name: plantuml
+  become: true
+
+- name: Install act for local testing of GitHub action
+  ansible.builtin.command: /usr/local/go/bin/go install github.com/nektos/act@v0.2.26
+  changed_when: true

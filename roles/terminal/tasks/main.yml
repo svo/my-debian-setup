@@ -1,0 +1,45 @@
+- name: Install terminator terminal emulator
+  ansible.builtin.apt:
+    name: terminator
+  become: true
+
+- name: Create terminator configuration directory
+  ansible.builtin.file:
+    path: ~/.config/terminator
+    state: directory
+    mode: '0755'
+
+- name: Copy terminator configuration
+  ansible.builtin.copy:
+    src: terminator.config
+    dest: ~/.config/terminator/config
+    mode: '0644'
+
+- name: Install tmux terminal multiplexer
+  ansible.builtin.apt:
+    name: tmux
+  become: true
+
+- name: Setup tmux
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.tmux.conf
+    mode: "0644"
+    block: |
+      bind c new-window -c "#{pane_current_path}"
+      bind '"' split-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+      setw -g mode-keys vi
+
+- name: Start tmux by default in bash
+  ansible.builtin.blockinfile:
+    path: ~/.bashrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
+    block: |
+      TERM=xterm &&
+      if [ "$TMUX" = "" ]; then tmux; fi
+
+- name: Install xclip clipboard utility
+  ansible.builtin.apt:
+    name: xclip
+  become: true

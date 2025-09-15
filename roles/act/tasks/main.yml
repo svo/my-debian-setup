@@ -1,3 +1,0 @@
-- name: Install act for local testing of GitHub action
-  ansible.builtin.command: /usr/local/go/bin/go install github.com/nektos/act@v0.2.26
-  changed_when: true
