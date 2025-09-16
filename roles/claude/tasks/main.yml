@@ -1,8 +1,8 @@
 - name: Install Claude Code
   ansible.builtin.shell: >
     npm install @anthropic-ai/claude-code --global
-  register: npm_install_claude
-  changed_when: "'added' in npm_install_claude.stdout"
+  register: claude_install_result
+  changed_when: "'added' in claude_install_result.stdout"
   become: true
 
 - name: Add Context7 MCP Server to Claude Code

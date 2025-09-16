@@ -2,4 +2,3 @@
 skip_list:
   - 'latest[git]'
   - 'package-latest'
-  - 'role-name'
