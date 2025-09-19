@@ -37,7 +37,7 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
     block: |
       TERM=xterm &&
-      if [ "$TMUX" = "" ]; then tmux; fi
+      if [ "$TMUX" = "" ] && [ -z "$TERMINATOR_UUID" ]; then tmux; fi
 
 - name: Install xclip clipboard utility
   ansible.builtin.apt:
