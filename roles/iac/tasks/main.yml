@@ -19,6 +19,11 @@
     name: ansible
   become: true
 
+- name: Install ansible-lint
+  ansible.builtin.apt:
+    name: ansible-lint
+  become: true
+
 - name: Install vagrant
   ansible.builtin.apt:
     name: vagrant
