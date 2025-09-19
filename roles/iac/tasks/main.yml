@@ -54,6 +54,11 @@
     name: awscli
   become: true
 
+- name: Install pre-commit
+  ansible.builtin.apt:
+    name: pre-commit
+  become: true
+
 - name: Install vim plugins
   ansible.builtin.git:
     repo: "{{ item.repo }}"
