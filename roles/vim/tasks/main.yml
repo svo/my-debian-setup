@@ -53,7 +53,6 @@
     - {repo: "https://github.com/tfnico/vim-gradle.git", dest: vim-gradle}
     - {repo: "https://github.com/python-mode/python-mode.git", dest: python-mode}
     - {repo: "https://github.com/udalov/kotlin-vim.git", dest: kotlin-vim}
-    - {repo: "https://github.com/Exafunction/codeium.vim.git", dest: codeium}
     - {repo: "https://github.com/junegunn/vader.vim.git", dest: vader}
 
 - name: Update .vimrc
@@ -78,9 +77,6 @@
       autocmd FileType Markdown setlocal spell spelllang=en_au
       set encoding=utf-8
       let mapleader = ","
-      imap <Leader>[ <Cmd>call codeium#CycleCompletions(1)<CR>
-      imap <Leader>] <Cmd>call codeium#CycleCompletions(-1)<CR>
-      imap <Leader>. <Cmd>call codeium#Complete()<CR>
 
 - name: Set vim as git editor
   community.general.git_config:
