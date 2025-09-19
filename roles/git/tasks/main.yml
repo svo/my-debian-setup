@@ -50,3 +50,8 @@
         added = yellow
         changed = green
         untracked = cyan
+
+- name: Install GitHub CLI
+  ansible.builtin.apt:
+    pkg: gh
+  become: true
