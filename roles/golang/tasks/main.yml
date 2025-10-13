@@ -1,11 +1,11 @@
-- name: Install requirements
+- name: Install golang dependencies
   ansible.builtin.apt:
     name:
       - curl
       - ca-certificates
   become: true
 
-- name: Get golang
+- name: Download and extract golang
   ansible.builtin.unarchive:
     src: "https://golang.org/dl/go1.16.3.linux-{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.tar.gz"
     dest: /usr/local
@@ -14,13 +14,13 @@
     remote_src: true
   become: true
 
-- name: Create a directory if it does not exist
+- name: Create golang workspace directory
   ansible.builtin.file:
     path: $HOME/go
     state: directory
     mode: '0755'
 
-- name: Update ~/.profile
+- name: Configure golang environment variables
   ansible.builtin.blockinfile:
     create: true
     path: ~/.profile

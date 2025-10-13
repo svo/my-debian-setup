@@ -1,9 +1,9 @@
-- name: Install TaskWarrior To-Do
+- name: Install taskwarrior task management tool
   ansible.builtin.apt:
     name: taskwarrior
   become: true
 
-- name: Install TaskWarrior terminal interface
+- name: Install vit taskwarrior terminal interface
   ansible.builtin.apt:
     name: vit
   become: true

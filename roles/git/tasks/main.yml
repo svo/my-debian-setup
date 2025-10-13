@@ -1,14 +1,14 @@
-- name: Install bash completion
+- name: Install bash-completion command completion
   ansible.builtin.apt:
     pkg: bash-completion
   become: true
 
-- name: Install git
+- name: Install git version control system
   ansible.builtin.apt:
     pkg: git-core
   become: true
 
-- name: Setup terminal for git
+- name: Configure git bash prompt integration
   ansible.builtin.blockinfile:
     path: ~/.bashrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
@@ -27,7 +27,7 @@
           export GIT_PS1_SHOWCOLORHINTS=1
       fi
 
-- name: Setup git colors
+- name: Configure git color settings
   ansible.builtin.blockinfile:
     path: ~/.gitconfig
     create: true
@@ -51,7 +51,7 @@
         changed = green
         untracked = cyan
 
-- name: Install GitHub CLI
+- name: Install gh GitHub CLI
   ansible.builtin.apt:
     pkg: gh
   become: true

@@ -3,13 +3,13 @@
     name: terminator
   become: true
 
-- name: Create terminator configuration directory
+- name: Create terminator config directory
   ansible.builtin.file:
     path: ~/.config/terminator
     state: directory
     mode: '0755'
 
-- name: Copy terminator configuration
+- name: Configure terminator settings
   ansible.builtin.copy:
     src: terminator.config
     dest: ~/.config/terminator/config
@@ -20,7 +20,7 @@
     name: tmux
   become: true
 
-- name: Setup tmux
+- name: Configure tmux default settings
   ansible.builtin.blockinfile:
     create: true
     path: ~/.tmux.conf
@@ -31,7 +31,7 @@
       bind % split-window -h -c "#{pane_current_path}"
       setw -g mode-keys vi
 
-- name: Start tmux by default in bash
+- name: Configure tmux auto-start in bash
   ansible.builtin.blockinfile:
     path: ~/.bashrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"

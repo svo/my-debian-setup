@@ -1,4 +1,4 @@
-- name: Install vim
+- name: Install vim text editor
   ansible.builtin.apt:
     name:
       - vim
@@ -12,12 +12,12 @@
   with_items: "{{ vim_plugin_package }}"
   become: true
 
-- name: Install vim plugins
+- name: Configure vim addon manager plugins
   ansible.builtin.command: vam install {{ item }}
   with_items: "{{ vim_plugin_package }}"
   changed_when: true
 
-- name: Setup paths for vim
+- name: Create vim directories
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
@@ -27,7 +27,7 @@
     - ~/.vim/bundle
     - ~/.vim/ftplugin
 
-- name: Set kotlin vim settings
+- name: Configure kotlin vim filetype settings
   ansible.builtin.copy:
     dest: ~/.vim/ftplugin/kotlin.vim
     mode: '0644'
@@ -35,28 +35,91 @@
       setlocal  tabstop=4
       setlocal  shiftwidth=4
 
-- name: Install vim plugin
+- name: Install vim-fern file explorer
   ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: ~/.vim/bundle/{{ item.dest }}
+    repo: https://github.com/lambdalisue/vim-fern.git
+    dest: ~/.vim/bundle/vim-fern
     force: true
-  with_items:
-    - {repo: "https://github.com/lambdalisue/vim-fern.git", dest: vim-fern}
-    - {repo: "https://github.com/lambdalisue/vim-fern-git-status.git", dest: vim-fern-git-status}
-    - {repo: "https://github.com/lambdalisue/vim-fern-hijack.git", dest: vim-fern-hijack}
-    - {repo: "https://github.com/junegunn/fzf.git", dest: fzf}
-    - {repo: "https://github.com/ntpeters/vim-better-whitespace.git", dest: vim-better-whitespace}
-    - {repo: "https://github.com/airblade/vim-gitgutter.git", dest: vim-gitgutter}
-    - {repo: "https://github.com/plasticboy/vim-markdown.git", dest: vim-markdown}
-    - {repo: "https://github.com/IN3D/vim-raml.git", dest: vim-raml}
-    - {repo: "https://github.com/aklt/plantuml-syntax.git", dest: plantuml-syntax}
-    - {repo: "https://github.com/tfnico/vim-gradle.git", dest: vim-gradle}
-    - {repo: "https://github.com/python-mode/python-mode.git", dest: python-mode}
-    - {repo: "https://github.com/udalov/kotlin-vim.git", dest: kotlin-vim}
-    - {repo: "https://github.com/github/copilot.vim.git", dest: copilot}
-    - {repo: "https://github.com/junegunn/vader.vim.git", dest: vader}
 
-- name: Update .vimrc
+- name: Install vim-fern-git-status plugin
+  ansible.builtin.git:
+    repo: https://github.com/lambdalisue/vim-fern-git-status.git
+    dest: ~/.vim/bundle/vim-fern-git-status
+    force: true
+
+- name: Install vim-fern-hijack plugin
+  ansible.builtin.git:
+    repo: https://github.com/lambdalisue/vim-fern-hijack.git
+    dest: ~/.vim/bundle/vim-fern-hijack
+    force: true
+
+- name: Install fzf fuzzy finder
+  ansible.builtin.git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: ~/.vim/bundle/fzf
+    force: true
+
+- name: Install vim-better-whitespace plugin
+  ansible.builtin.git:
+    repo: https://github.com/ntpeters/vim-better-whitespace.git
+    dest: ~/.vim/bundle/vim-better-whitespace
+    force: true
+
+- name: Install vim-gitgutter plugin
+  ansible.builtin.git:
+    repo: https://github.com/airblade/vim-gitgutter.git
+    dest: ~/.vim/bundle/vim-gitgutter
+    force: true
+
+- name: Install vim-markdown plugin
+  ansible.builtin.git:
+    repo: https://github.com/plasticboy/vim-markdown.git
+    dest: ~/.vim/bundle/vim-markdown
+    force: true
+
+- name: Install vim-raml plugin
+  ansible.builtin.git:
+    repo: https://github.com/IN3D/vim-raml.git
+    dest: ~/.vim/bundle/vim-raml
+    force: true
+
+- name: Install plantuml-syntax vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/aklt/plantuml-syntax.git
+    dest: ~/.vim/bundle/plantuml-syntax
+    force: true
+
+- name: Install vim-gradle plugin
+  ansible.builtin.git:
+    repo: https://github.com/tfnico/vim-gradle.git
+    dest: ~/.vim/bundle/vim-gradle
+    force: true
+
+- name: Install python-mode vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/python-mode/python-mode.git
+    dest: ~/.vim/bundle/python-mode
+    force: true
+
+- name: Install kotlin-vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/udalov/kotlin-vim.git
+    dest: ~/.vim/bundle/kotlin-vim
+    force: true
+
+- name: Install copilot vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/github/copilot.vim.git
+    dest: ~/.vim/bundle/copilot
+    force: true
+
+- name: Install vader vim testing plugin
+  ansible.builtin.git:
+    repo: https://github.com/junegunn/vader.vim.git
+    dest: ~/.vim/bundle/vader
+    force: true
+
+- name: Configure vim settings
   ansible.builtin.blockinfile:
     create: true
     path: ~/.vimrc
@@ -79,7 +142,7 @@
       set encoding=utf-8
       let mapleader = ","
 
-- name: Set vim as git editor
+- name: Configure vim as git editor
   community.general.git_config:
     name: core.editor
     scope: global

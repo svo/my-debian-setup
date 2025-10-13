@@ -1,80 +1,80 @@
-- name: Add jellyfin apt key
+- name: Add jellyfin GPG key
   ansible.builtin.apt_key:
     url: https://repo.jellyfin.org/jellyfin_team.gpg.key
     keyring: /etc/apt/trusted.gpg.d/jellyfin.gpg
   become: true
 
-- name: Install jellyfin apt repository
+- name: Add jellyfin apt repository
   ansible.builtin.apt_repository:
     repo: 'deb https://repo.jellyfin.org/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main'
     state: present
   become: true
 
-- name: Install jellyfin
+- name: Install jellyfin media server
   ansible.builtin.apt:
     name: jellyfin
     update_cache: true
   become: true
 
-- name: Install commandline metadata tool
+- name: Install libimage-exiftool-perl metadata tool
   ansible.builtin.apt:
     pkg: libimage-exiftool-perl
   become: true
 
-- name: Install VLC media player
+- name: Install vlc media player
   ansible.builtin.apt:
     pkg: vlc
   become: true
 
-- name: Add spotify apt key
+- name: Add spotify GPG key
   ansible.builtin.apt_key:
     url: https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg
   become: true
 
-- name: Add spotify repository
+- name: Add spotify apt repository
   ansible.builtin.apt_repository:
     repo: "deb http://repository.spotify.com stable non-free"
   become: true
 
-- name: Install spotify client
+- name: Install spotify-client music player
   ansible.builtin.apt:
     pkg: spotify-client
     update_cache: true
   failed_when: false
   become: true
 
-- name: Install GIMP photo editor
+- name: Install gimp photo editor
   ansible.builtin.apt:
     pkg: gimp
   become: true
 
-- name: Install handbrake video converter
+- name: Install handbrake video transcoder
   ansible.builtin.apt:
     pkg: handbrake
   become: true
 
-- name: Download OpenAudible .deb
+- name: Download openaudible installer
   ansible.builtin.get_url:
     url: https://github.com/openaudible/openaudible/releases/download/v3.5.3/OpenAudible_3.5.3_x86_64.deb
     dest: ~/Installs/OpenAudible_x86_64.deb
     mode: '0644'
 
-- name: Install OpenAudible
+- name: Install openaudible audiobook manager
   ansible.builtin.apt:
     deb: /tmp/Installs/OpenAudible_x86_64.deb
   become: true
 
-- name: Install Cheese for webcam support
+- name: Install cheese webcam application
   ansible.builtin.apt:
     pkg: cheese
   become: true
 
-- name: Install capture program for webcam
+- name: Install motion webcam capture program
   ansible.builtin.apt:
     pkg: motion
   become: true
 
-- name: Install mkv video tools
+- name: Install mkvtoolnix video tools
   ansible.builtin.apt:
     pkg: mkvtoolnix,mkvtoolnix-gui
   become: true

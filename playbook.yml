@@ -1,22 +1,22 @@
 ---
-- name: Debian setup playbook
+- name: Setup Debian development environment
   hosts: all
 
   pre_tasks:
 
-    - name: Create Installs directories
+    - name: Create Installs directory
       ansible.builtin.file:
         path: ~/Installs
         state: directory
         mode: '0755'
 
-    - name: Symlink ~/Installs
+    - name: Create Installs symlink to /tmp
       ansible.builtin.file:
         src: ~/Installs
         dest: /tmp/Installs
         state: link
 
-    - name: Install required packages
+    - name: Install required system packages
       ansible.builtin.apt:
         name:
           - apt-transport-https
@@ -53,7 +53,7 @@
 
   post_tasks:
 
-    - name: Add docker group for user
+    - name: Configure docker group for user
       ansible.builtin.user:
         name: "{{ ansible_user_id }}"
         groups: docker

@@ -1,14 +1,14 @@
-- name: Install SSH server
+- name: Install openssh-server SSH server
   ansible.builtin.apt:
     pkg: openssh-server
   become: true
 
-- name: Install sshpass
+- name: Install sshpass password authentication tool
   ansible.builtin.apt:
     pkg: sshpass
   become: true
 
-- name: Disable SSHD startup
+- name: Disable SSH daemon auto-start
   ansible.builtin.command: update-rc.d ssh disable
   become: true
   changed_when: true

@@ -1,14 +1,14 @@
-- name: Install nginx
+- name: Install nginx web server
   ansible.builtin.apt:
     pkg: nginx
   become: true
 
-- name: Install SSL certificate tooling
+- name: Install certbot SSL certificate tools
   ansible.builtin.apt:
     pkg: certbot,python3-certbot-nginx
   become: true
 
-- name: Install crontab
+- name: Install cron task scheduler
   ansible.builtin.apt:
     pkg: cron
   become: true

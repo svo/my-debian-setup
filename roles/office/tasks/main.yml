@@ -1,9 +1,9 @@
-- name: Install Gpick color picker
+- name: Install gpick color picker
   ansible.builtin.apt:
     pkg: gpick
   become: true
 
-- name: Download boost note
+- name: Download boost-note installer
   ansible.builtin.get_url:
     url: https://github.com/BoostIO/BoostNote-App/releases/download/v0.23.1/boost-note-linux.AppImage
     dest: ~/Installs/boost-note-linux.AppImage

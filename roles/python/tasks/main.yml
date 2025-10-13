@@ -1,4 +1,4 @@
-- name: Install python
+- name: Install python3 programming language
   ansible.builtin.apt:
     name: python3-full
   become: true

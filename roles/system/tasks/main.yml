@@ -1,62 +1,62 @@
-- name: Install firewall
+- name: Install ufw firewall
   ansible.builtin.apt:
     pkg: ufw
   become: true
 
-- name: Install apt file
+- name: Install apt-file package search tool
   ansible.builtin.apt:
     pkg: apt-file
   become: true
 
-- name: Install bluetooth support
+- name: Install bluez bluetooth stack
   ansible.builtin.apt:
     pkg: bluez,blueman
   become: true
 
-- name: Install lshw for listing hardware details
+- name: Install lshw hardware lister
   ansible.builtin.apt:
     name: lshw
   become: true
 
-- name: Install Midnight Commander file manager
+- name: Install mc file manager
   ansible.builtin.apt:
     name: mc
   become: true
 
-- name: Install NCurses disk Usage utility
+- name: Install ncdu disk usage analyzer
   ansible.builtin.apt:
     name: ncdu
   become: true
 
-- name: Install wondershaper for limiting adapter bandwidth
+- name: Install wondershaper bandwidth limiter
   ansible.builtin.apt:
     name: wondershaper
   become: true
 
-- name: Install locate
+- name: Install plocate file locator
   ansible.builtin.apt:
     name: plocate
   become: true
 
-- name: Install fdupes for finding duplicate files on filesystem
+- name: Install fdupes duplicate file finder
   ansible.builtin.apt:
     name: fdupes
   become: true
 
-- name: Download topgrade installation resource
+- name: Download topgrade installer
   ansible.builtin.get_url:
     url: https://github.com/r-darwish/topgrade/releases/download/v8.2.0/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz
     dest: ~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz
     checksum: sha256:5d2588260673d93355744a974f85cff8cb9eceb60fff45e26f625130f051151c
     mode: '0644'
 
-- name: Unarchive topgrade
+- name: Extract topgrade archive
   ansible.builtin.unarchive:
     src: ~/Installs/topgrade-v8.2.0-x86_64-unknown-linux-gnu.tar.gz
     remote_src: true
     dest: /tmp
 
-- name: Install topgrade
+- name: Install topgrade upgrade manager
   ansible.builtin.copy:
     src: /tmp/topgrade
     dest: /usr/local/bin

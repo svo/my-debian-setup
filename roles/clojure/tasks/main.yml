@@ -1,18 +1,16 @@
-- name: Install lein
+- name: Install lein clojure build tool
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
     dest: /usr/local/bin/lein
     mode: '0755'
   become: true
 
-- name: Install JDK
+- name: Install default-jdk Java development kit
   ansible.builtin.apt:
     name: default-jdk
   become: true
 
-- name: Install vim plugin
+- name: Install vim-fireplace vim plugin
   ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: ~/.vim/bundle/{{ item.dest }}
-  with_items:
-    - { repo: "https://github.com/tpope/vim-fireplace.git", dest: vim-fireplace }
+    repo: https://github.com/tpope/vim-fireplace.git
+    dest: ~/.vim/bundle/vim-fireplace

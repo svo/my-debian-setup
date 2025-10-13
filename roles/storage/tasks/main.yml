@@ -1,50 +1,50 @@
-- name: Install duplicity for backup
+- name: Install duplicity backup tool
   ansible.builtin.apt:
     pkg: duplicity
     update_cache: true
   become: true
 
-- name: Install Déjà Dup for backup
+- name: Install deja-dup backup application
   ansible.builtin.apt:
     pkg: deja-dup
   become: true
 
-- name: Install NFS
+- name: Install nfs-kernel-server NFS server
   ansible.builtin.apt:
     pkg: nfs-kernel-server
   become: true
 
-- name: Install ntfs-3g for NTFS filesystem support
+- name: Install ntfs-3g NTFS filesystem driver
   ansible.builtin.apt:
     pkg: ntfs-3g
   become: true
 
-- name: Install gpart/ed partition
+- name: Install gpart partition tools
   ansible.builtin.apt:
     pkg: gpart,gparted
   become: true
 
-- name: Install ddrescue
+- name: Install gddrescue data recovery tool
   ansible.builtin.apt:
     pkg: gddrescue
   become: true
 
-- name: Install testdisk
+- name: Install testdisk data recovery tool
   ansible.builtin.apt:
     pkg: testdisk
   become: true
 
-- name: Install safecopy
+- name: Install safecopy data recovery tool
   ansible.builtin.apt:
     pkg: safecopy
   become: true
 
-- name: Install foremost to recover lost files
+- name: Install foremost file recovery tool
   ansible.builtin.apt:
     pkg: foremost
   become: true
 
-- name: Install Cryptmount for encrypted filesystems
+- name: Install cryptmount encrypted filesystem manager
   ansible.builtin.apt:
     pkg: cryptmount
   become: true

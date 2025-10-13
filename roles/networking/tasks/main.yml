@@ -1,29 +1,29 @@
-- name: Install network bridge utils
+- name: Install bridge-utils network bridge utilities
   ansible.builtin.apt:
     pkg: bridge-utils
   become: true
 
-- name: Install dnsmasq
+- name: Install dnsmasq DNS forwarder
   ansible.builtin.apt:
     pkg: dnsmasq
   become: true
 
-- name: Install wireless tools
+- name: Install wireless-tools wireless configuration utilities
   ansible.builtin.apt:
     pkg: wireless-tools
   become: true
 
-- name: Install graphical wireless scanner
+- name: Install linssid wireless network scanner
   ansible.builtin.apt:
     pkg: linssid
   become: true
 
-- name: Install avahi
+- name: Install avahi-daemon mDNS service
   ansible.builtin.apt:
     pkg: avahi-daemon
   become: true
 
-- name: Install whois
+- name: Install whois domain lookup tool
   ansible.builtin.apt:
     name: whois
   become: true

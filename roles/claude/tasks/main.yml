@@ -1,32 +1,32 @@
-- name: Install Claude Code
+- name: Install claude-code CLI tool
   ansible.builtin.shell: >
     npm install @anthropic-ai/claude-code --global
   register: claude_install_result
   changed_when: "'added' in claude_install_result.stdout"
   become: true
 
-- name: Add Context7 MCP Server to Claude Code
+- name: Add context7 MCP server
   ansible.builtin.shell: >
     claude mcp add --transport http --scope user context7 https://mcp.context7.com/mcp
   register: claude_mcp_add_context7
   changed_when: "'Added MCP server' in claude_mcp_add_context7.stdout or 'Successfully added' in claude_mcp_add_context7.stdout"
   failed_when: false
 
-- name: Add Sequential Thinking MCP Server to Claude Code
+- name: Add sequential-thinking MCP server
   ansible.builtin.shell: >
     claude mcp add --scope user sequential-thinking npx -- -y @modelcontextprotocol/server-sequential-thinking
   register: claude_mcp_add_sequential
   changed_when: "'Added MCP server' in claude_mcp_add_sequential.stdout or 'Successfully added' in claude_mcp_add_sequential.stdout"
   failed_when: false
 
-- name: Add Figma MCP Server to Claude Code
+- name: Add figma MCP server
   ansible.builtin.shell: >
     claude mcp add --scope user figma npx -- -y figma-developer-mcp --stdio
   register: claude_mcp_add_figma
   changed_when: "'Added MCP server' in claude_mcp_add_figma.stdout or 'Successfully added' in claude_mcp_add_figma.stdout"
   failed_when: false
 
-- name: Add Notion MCP Server to Claude Code
+- name: Add notion MCP server
   ansible.builtin.shell: >
     claude mcp add --scope user notion npx -- -y @notionhq/notion-mcp-server
   register: claude_mcp_add_notion

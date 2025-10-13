@@ -1,47 +1,47 @@
-- name: Install flatpak application deployment framework for desktop apps
+- name: Install flatpak application framework
   ansible.builtin.apt:
     name: flatpak
   become: true
 
-- name: Add the flathub remote
+- name: Add flathub flatpak repository
   community.general.flatpak_remote:
     name: flathub
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
   become: true
 
-- name: Install snap daemon
+- name: Install snapd package manager
   ansible.builtin.apt:
     name: snapd
   become: true
 
-- name: Install ansible
+- name: Install ansible configuration management tool
   ansible.builtin.apt:
     name: ansible
   become: true
 
-- name: Install ansible-lint
+- name: Install ansible-lint linting tool
   ansible.builtin.apt:
     name: ansible-lint
   become: true
 
-- name: Install vagrant
+- name: Install vagrant development environment manager
   ansible.builtin.apt:
     name: vagrant
   become: true
 
-- name: Download Terraform installation resource
+- name: Download terraform installer
   ansible.builtin.get_url:
     url: "https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
     dest: "~/Installs/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
     mode: '0644'
 
-- name: Unarchive Terraform
+- name: Extract terraform archive
   ansible.builtin.unarchive:
     src: "~/Installs/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
     remote_src: true
     dest: /tmp
 
-- name: Install Terraform
+- name: Install terraform infrastructure as code tool
   ansible.builtin.copy:
     src: /tmp/terraform
     dest: /usr/local/bin
@@ -49,26 +49,32 @@
     mode: '0755'
   become: true
 
-- name: Install packer
+- name: Install packer image builder
   ansible.builtin.apt:
     name: packer
   become: true
 
-- name: Install awscli
+- name: Install awscli AWS command-line interface
   ansible.builtin.apt:
     name: awscli
   become: true
 
-- name: Install pre-commit
+- name: Install pre-commit git hook manager
   ansible.builtin.apt:
     name: pre-commit
   become: true
 
-- name: Install vim plugins
+- name: Install ansible-vim vim plugin
   ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: ~/.vim/bundle/{{ item.dest }}
-  with_items:
-    - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
-    - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}
-    - {repo: "https://github.com/rodjek/vim-puppet.git", dest: vim-puppet}
+    repo: https://github.com/pearofducks/ansible-vim.git
+    dest: ~/.vim/bundle/ansible-vim
+
+- name: Install vim-terraform vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/hashivim/vim-terraform.git
+    dest: ~/.vim/bundle/vim-terraform
+
+- name: Install vim-puppet vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/rodjek/vim-puppet.git
+    dest: ~/.vim/bundle/vim-puppet

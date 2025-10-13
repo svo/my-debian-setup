@@ -1,19 +1,19 @@
-- name: Install tor anonymizing overlay network for TCP
+- name: Install tor anonymizing network
   ansible.builtin.apt:
     pkg: tor
   become: true
 
-- name: Disable tor startup
+- name: Disable tor daemon auto-start
   ansible.builtin.command: update-rc.d tor disable
   become: true
   changed_when: true
 
-- name: Install nmap for network discovery and security auditing
+- name: Install nmap network scanner
   ansible.builtin.apt:
     pkg: nmap
   become: true
 
-- name: Install dnsrecon for DNS enumeration
+- name: Install dnsrecon DNS enumeration tool
   ansible.builtin.apt:
     pkg: dnsrecon
   become: true

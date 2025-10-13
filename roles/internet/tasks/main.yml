@@ -1,62 +1,62 @@
-- name: Install lynx command line browser
+- name: Install lynx text-based web browser
   ansible.builtin.apt:
     pkg: lynx
   become: true
 
-- name: Add brave apt key
+- name: Add brave browser GPG key
   ansible.builtin.apt_key:
     url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
     keyring: /usr/share/keyrings/brave-browser-archive-keyring.gpg
   become: true
 
-- name: Add brave apt repository
+- name: Add brave browser apt repository
   ansible.builtin.apt_repository:
     repo: 'deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main'
     filename: brave-browser
     update_cache: true
   become: true
 
-- name: Install brave web browser
+- name: Install brave-browser web browser
   ansible.builtin.apt:
     pkg: brave-browser
   become: true
 
-- name: Add google apt key
+- name: Add google chrome GPG key
   ansible.builtin.apt_key:
     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
   become: true
 
-- name: Add google apt repository
+- name: Add google chrome apt repository
   ansible.builtin.apt_repository:
     repo: 'deb https://dl.google.com/linux/chrome/deb/ stable main'
     filename: google-chrome
     update_cache: true
   become: true
 
-- name: Install chrome web browser
+- name: Install google-chrome-stable web browser
   ansible.builtin.apt:
     pkg: google-chrome-stable
   failed_when: false
   become: true
 
-- name: Download ferdium .deb
+- name: Download ferdium installer
   ansible.builtin.get_url:
     url: "https://github.com/ferdium/ferdium-app/releases/download/v7.1.0/\
       Ferdium-linux-7.1.0-{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.deb"
     dest: ~/Installs/ferdium.deb
     mode: '0644'
 
-- name: Install ferdium
+- name: Install ferdium messaging aggregator
   ansible.builtin.apt:
     deb: /tmp/Installs/ferdium.deb
   become: true
 
-- name: Install Deluge BitTorrent client
+- name: Install deluge BitTorrent client
   ansible.builtin.apt:
     pkg: deluge
   become: true
 
-- name: Install uGet download manager
+- name: Install uget download manager
   ansible.builtin.apt:
     pkg: uget
   become: true

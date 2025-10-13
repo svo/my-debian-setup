@@ -1,16 +1,14 @@
-- name: Install rbenv ruby version control
+- name: Install rbenv ruby version manager
   ansible.builtin.apt:
     pkg: rbenv,ruby-build
   become: true
 
-- name: Add rbenv to .bashrc
+- name: Configure rbenv shell integration
   ansible.builtin.lineinfile:
     dest: ~/.bashrc
     line: 'eval "$(rbenv init -)"'
 
-- name: Install vim plugins
+- name: Install vim-ruby vim plugin
   ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: "~/.vim/bundle/{{ item.dest }}"
-  with_items:
-    - { repo: "https://github.com/vim-ruby/vim-ruby.git", dest: vim-ruby }
+    repo: https://github.com/vim-ruby/vim-ruby.git
+    dest: ~/.vim/bundle/vim-ruby
