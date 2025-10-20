@@ -10,6 +10,18 @@
     state: present
   become: true
 
+- name: Install libjemalloc2 dependency
+  ansible.builtin.apt:
+    name: libjemalloc2
+    state: present
+    update_cache: true
+  become: true
+
+- name: Update ldconfig cache
+  ansible.builtin.command: ldconfig
+  become: true
+  changed_when: false
+
 - name: Install jellyfin media server
   ansible.builtin.apt:
     name: jellyfin
