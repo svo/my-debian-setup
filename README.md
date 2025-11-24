@@ -2,7 +2,7 @@
 
 [![Continuous integration](https://github.com/svo/my-debian-setup/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/svo/my-debian-setup/actions/workflows/main.yml)
 
-An Ansible-based automation framework for configuring a complete Debian/Ubuntu development environment with programming languages, tools, and applications.
+An Ansible-based automation framework for configuring a complete Debian/Ubuntu development environment with programming languages, tools, and applications. For more context, see the accompanying blog post at [qual.is/posts/my-debian-setup](https://www.qual.is/posts/my-debian-setup).
 
 ## Setup Tested On
 
