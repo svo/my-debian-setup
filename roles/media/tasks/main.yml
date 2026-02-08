@@ -38,10 +38,12 @@
     pkg: vlc
   become: true
 
-- name: Add spotify GPG key
-  ansible.builtin.apt_key:
-    url: https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg
+- name: Add Spotify GPG key from keyserver
+  ansible.builtin.shell: |
+    gpg --keyserver keyserver.ubuntu.com --recv-keys 5384CE82BA52C83A && \
+    gpg --export 5384CE82BA52C83A | gpg --dearmor > /etc/apt/trusted.gpg.d/spotify.gpg
   become: true
+  changed_when: true
 
 - name: Add spotify apt repository
   ansible.builtin.apt_repository:

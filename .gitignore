@@ -1,6 +1,7 @@
 *.swp
 *.retry
 .vagrant
+.claude
 .DS_Store
 tmp
 express*
