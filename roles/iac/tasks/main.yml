@@ -31,13 +31,13 @@
 
 - name: Download terraform installer
   ansible.builtin.get_url:
-    url: "https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
-    dest: "~/Installs/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
+    url: "https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_{% if ansible_facts['architecture'] == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
+    dest: "~/Installs/terraform_1.1.7_linux_{% if ansible_facts['architecture'] == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
     mode: '0644'
 
 - name: Extract terraform archive
   ansible.builtin.unarchive:
-    src: "~/Installs/terraform_1.1.7_linux_{% if ansible_architecture == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
+    src: "~/Installs/terraform_1.1.7_linux_{% if ansible_facts['architecture'] == 'aarch64' %}arm64{% else %}amd64{% endif %}.zip"
     remote_src: true
     dest: /tmp
 
