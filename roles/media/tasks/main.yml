@@ -38,23 +38,10 @@
     pkg: vlc
   become: true
 
-- name: Add Spotify GPG key from keyserver
-  ansible.builtin.shell: |
-    gpg --keyserver keyserver.ubuntu.com --recv-keys 5384CE82BA52C83A && \
-    gpg --export 5384CE82BA52C83A | gpg --dearmor > /etc/apt/trusted.gpg.d/spotify.gpg
-  become: true
-  changed_when: true
-
-- name: Add spotify apt repository
-  ansible.builtin.apt_repository:
-    repo: "deb http://repository.spotify.com stable non-free"
-  become: true
-
-- name: Install spotify-client music player
-  ansible.builtin.apt:
-    pkg: spotify-client
-    update_cache: true
-  failed_when: false
+- name: Install spotify music player
+  community.general.flatpak:
+    name: com.spotify.Client
+    state: present
   become: true
 
 - name: Install gimp photo editor
