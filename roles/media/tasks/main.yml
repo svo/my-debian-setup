@@ -44,6 +44,19 @@
     state: present
   become: true
 
+- name: Create spotify flatpak config directory
+  ansible.builtin.file:
+    path: ~/.var/app/com.spotify.Client/config
+    state: directory
+    mode: '0755'
+
+- name: Force pulseaudio backend for spotify playback
+  ansible.builtin.copy:
+    content: |
+      --audio-api=pulseaudio
+    dest: ~/.var/app/com.spotify.Client/config/spotify-flags.conf
+    mode: '0644'
+
 - name: Install gimp photo editor
   ansible.builtin.apt:
     pkg: gimp
