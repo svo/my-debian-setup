@@ -18,6 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     debian.vm.hostname = 'development-box-debian'
+    debian.vm.network :forwarded_port, id: 'ssh', guest: 22, host: 2310, host_ip: '127.0.0.1'
 
     debian.vm.provision 'ansible' do |ansible|
       ansible.playbook = 'playbook.yml'
