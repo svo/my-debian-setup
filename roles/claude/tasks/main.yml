@@ -12,12 +12,17 @@
   changed_when: "'Added MCP server' in claude_mcp_add_context7.stdout or 'Successfully added' in claude_mcp_add_context7.stdout"
   failed_when: false
 
-- name: Add sequential-thinking MCP server
-  ansible.builtin.shell: >
-    claude mcp add --scope user sequential-thinking npx -- -y @modelcontextprotocol/server-sequential-thinking
-  register: claude_mcp_add_sequential
-  changed_when: "'Added MCP server' in claude_mcp_add_sequential.stdout or 'Successfully added' in claude_mcp_add_sequential.stdout"
-  failed_when: false
+- name: Create the sequential-thinking skill directory for Claude Code
+  ansible.builtin.file:
+    path: "{{ ansible_facts['user_dir'] }}/.claude/skills/sequential-thinking"
+    state: directory
+    mode: "0755"
+
+- name: Install the sequential-thinking skill for Claude Code
+  ansible.builtin.copy:
+    src: skills/sequential-thinking/SKILL.md
+    dest: "{{ ansible_facts['user_dir'] }}/.claude/skills/sequential-thinking/SKILL.md"
+    mode: "0644"
 
 - name: Add figma MCP server
   ansible.builtin.shell: >
